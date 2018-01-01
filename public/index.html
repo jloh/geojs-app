@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <link href="//get.geojs.io" rel="dns-prefetch">
+    <title>GeoJS Web App</title>
+    <style>
+    .vertical-center {
+        min-height: 70%;
+        /* Fallback for browsers do NOT support vh unit */
+        min-height: 70vh;
+        /* These two lines are counted as one :-)       */
+        display: flex;
+        align-items: center;
+    }
+    /* Make bordered table slightly darker */
+    .table-bordered th {
+        border: 1px solid rgba(0, 0, 0, .15);
+        border-radius: .3rem;
+    }
+
+    .table-bordered td {
+        border-radius: .3rem;
+        border: 1px solid rgba(0, 0, 0, .15);
+    }
+
+    .table {
+        background: #fff;
+        border-radius: 4px 4px 4px 4px;
+        border: 1px solid rgba(0, 0, 0, .15);
+    }
+
+    .welcome {
+        margin-top: 50px;
+        margin-bottom: 10px;
+    }
+
+    .lookup-form {
+        margin-bottom: 20px;
+    }
+
+    .Site {
+        display: flex;
+        min-height: 100vh;
+        flex-direction: column;
+    }
+
+    .Site-content {
+        flex: 1;
+    }
+    </style>
+</head>
+
+<body class="Site" style="background: #EEEEEE;">
+    <main class="Site-content">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-faded" style="background-color: #e84e40;">
+            <a class="navbar-brand" href="#">GeoJS</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://geojs.io/docs/">Docs</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://geojs.io/#demo">Demo</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://jloh.co/tag/geojs/">Blog</a>
+                    </li>
+                </ul><span class="navbar-text">REST/JSON/JSONP IP Interface for Geo Lookups</span>
+            </div>
+        </nav>
+        <div class="container px-2 welcome">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h1>Hello <span id="user_ip"></span>!</h1>
+                    <p>Enter an IP in below to lookup its information.</p>
+                </div>
+            </div>
+        </div>
+        <div class="container align-items-center lookup-form">
+            <div class="row justify-content-lg-center">
+                <div class="col-lg-8">
+                    <form id="ip-lookup">
+                        <label class="sr-only" for="inlineFormInput">IP Address</label>
+                        <div class="input-group input-group-lg">
+                            <input type="text" class="form-control input-lg" name="ip" id="lookup" placeholder="IP Address">
+                            <span class="input-group-btn">
+                <button type="submit" class="btn btn-primary btn-lg">Submit</button>
+              </span>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row justify-content-lg-center">
+                <div class="col-lg-10">
+                    <h1 class="text-center">Results</h1>
+                    <div>
+                        <table class="table table-bordered table-responsive" id="geo-output">
+                            <tbody id="geo-table">
+                                <tr>
+                                    <th>IP Address</th>
+                                    <td><code id="geojs_ip" data-id="geo"></code></td>
+                                </tr>
+                                <tr>
+                                    <th>Organization</th>
+                                    <td id="geojs_organization" data-id="geo"></td>
+                                </tr>
+                                <tr>
+                                    <th>Country</th>
+                                    <td id="geojs_country" data-id="geo"></td>
+                                </tr>
+                                <tr>
+                                    <th>City</th>
+                                    <td id="geojs_city" data-id="geo"></td>
+                                </tr>
+                                <tr>
+                                    <th>Region</th>
+                                    <td id="geojs_region" data-id="geo"></td>
+                                </tr>
+                                <tr>
+                                    <th>PTR</th>
+                                    <td id="geojs_ptr" data-id="geo">Coming soon!</td>
+                                </tr>
+                                <tr>
+                                    <th>Latitude</th>
+                                    <td id="geojs_latitude" data-id="geo"></td>
+                                </tr>
+                                <tr>
+                                    <th>Longitude</th>
+                                    <td id="geojs_longitude" data-id="geo"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer class="d-flex p-2 footer">
+        <div class="d-inline-flex p-2">
+            GeoJS is a project by <a href="https://twitter.com/itsjloh" style="color: #464a4c; padding-left: .2rem;" title="Twitter">@itsjloh</a>
+        </div>
+        <div class="d-inline-flex p-2 ml-auto">
+            <a href="http://status.geojs.io" style="color: #464a4c" title="GeoJS Status">Service status</a>
+        </div>
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha256-gL1ibrbVcRIHKlCO5OXOPC/lZz/gpdApgQAzskqqXp8=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.4/lodash.min.js" integrity="sha256-8E6QUcFg1KTnpEU8TFGhpTGHw5fJqB9vCms3OhAYLqw=" crossorigin="anonymous"></script>
+    <script>
+    $("#ip-lookup").submit(function(event) {
+        // cancels the form submission
+        event.preventDefault();
+        submitForm();
+    });
+
+    function submitForm() {
+        var ip = $("#lookup").val();
+        var request = '';
+        getnew(ip);
+    };
+    </script>
+    <script>
+    $(document).ready(function() {
+        var $extend = $("#user_ip");
+        $.getJSON('https://get.geojs.io/v1/ip.js?callback=?',
+            function(json) {
+                $extend.append(' ' + json.ip);
+            }
+        )
+    });
+    </script>
+    <script>
+    // **** VARIABLES
+
+    var log,
+        geoURL = 'https://get.geojs.io/v1/ip/geo.js',
+        ptrURL = 'https://get.geojs.io/v1/ip/ptr.js',
+        request;
+
+    // **** LOAD GEO DATA
+
+    function geoip(geoData) {
+        var container = $('#geo-output'),
+            table = $('<tbody id="geo-table"><\/tbody>').appendTo(container);
+
+        _.forOwn(geoData, function(geoValue, geoKey) {
+            $('#geojs_' + geoKey).text(geoValue);
+        });
+
+    }
+    request = $.ajax({
+        url: geoURL,
+        dataType: "jsonp",
+        jsonpCallback: "geoip"
+    });
+
+    function getnew(refresh) {
+        $('[data-id="geo"]').text('¯\\_(ツ)_/¯');
+        $.when(
+                $.getJSON("https://get.geojs.io/v1/ip/geo/" + refresh + ".js?callback=?"),
+                $.getJSON("https://get.geojs.io/v1/dns/ptr/" + refresh + ".js?callback=?")
+            )
+            .done(function(geo_data, ptr) {
+
+                _.forOwn(geo_data[0], function(geoValue, geoKey) {
+                    $('#geojs_' + geoKey).text(geoValue);
+                });
+                _.forOwn(ptr[0], function(geoValue, geoKey) {
+                    $('#geojs_' + geoKey).text(geoValue);
+                });
+
+            });
+    };
+    </script>
+</body>
+
+</html>
