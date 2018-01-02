@@ -110,35 +110,35 @@
                             <tbody id="geo-table">
                                 <tr>
                                     <th>IP Address</th>
-                                    <td><code id="geojs_ip" data-id="geo"></code></td>
+                                    <td><code id="geojs_ip" geo-id="geo"></code></td>
                                 </tr>
                                 <tr>
                                     <th>Organization</th>
-                                    <td id="geojs_organization" data-id="geo"></td>
+                                    <td id="geojs_organization" geo-id="geo"></td>
                                 </tr>
                                 <tr>
                                     <th>Country</th>
-                                    <td id="geojs_country" data-id="geo"></td>
+                                    <td id="geojs_country" geo-id="geo"></td>
                                 </tr>
                                 <tr>
                                     <th>City</th>
-                                    <td id="geojs_city" data-id="geo"></td>
+                                    <td id="geojs_city" geo-id="geo"></td>
                                 </tr>
                                 <tr>
                                     <th>Region</th>
-                                    <td id="geojs_region" data-id="geo"></td>
+                                    <td id="geojs_region" geo-id="geo"></td>
                                 </tr>
                                 <tr>
                                     <th>PTR</th>
-                                    <td id="geojs_ptr" data-id="geo">Coming soon!</td>
+                                    <td id="geojs_ptr" geo-id="geo"></td>
                                 </tr>
                                 <tr>
                                     <th>Latitude</th>
-                                    <td id="geojs_latitude" data-id="geo"></td>
+                                    <td id="geojs_latitude" geo-id="geo"></td>
                                 </tr>
                                 <tr>
                                     <th>Longitude</th>
-                                    <td id="geojs_longitude" data-id="geo"></td>
+                                    <td id="geojs_longitude" geo-id="geo"></td>
                                 </tr>
                             </tbody>
                         </table>
@@ -161,70 +161,58 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.4/lodash.min.js" integrity="sha256-8E6QUcFg1KTnpEU8TFGhpTGHw5fJqB9vCms3OhAYLqw=" crossorigin="anonymous"></script>
     <script>
-    $("#ip-lookup").submit(function(event) {
-        // cancels the form submission
-        event.preventDefault();
-        submitForm();
-    });
-
-    function submitForm() {
-        var ip = $("#lookup").val();
-        var request = '';
-        getnew(ip);
-    };
-    </script>
-    <script>
-    $(document).ready(function() {
-        var $extend = $("#user_ip");
-        $.getJSON('https://get.geojs.io/v1/ip.js?callback=?',
-            function(json) {
-                $extend.append(' ' + json.ip);
-            }
-        )
-    });
-    </script>
-    <script>
-    // **** VARIABLES
-
-    var log,
-        geoURL = 'https://get.geojs.io/v1/ip/geo.js',
-        ptrURL = 'https://get.geojs.io/v1/ip/ptr.js',
-        request;
-
-    // **** LOAD GEO DATA
-
-    function geoip(geoData) {
-        var container = $('#geo-output'),
-            table = $('<tbody id="geo-table"><\/tbody>').appendTo(container);
-
-        _.forOwn(geoData, function(geoValue, geoKey) {
-            $('#geojs_' + geoKey).text(geoValue);
+        $("#ip-lookup").submit(function(event) {
+            // cancels the form submission
+            event.preventDefault();
+            submitForm();
         });
 
-    }
-    request = $.ajax({
-        url: geoURL,
-        dataType: "jsonp",
-        jsonpCallback: "geoip"
-    });
+       function submitForm() {
+            var ip = $("#lookup").val();
+            var request = '';
+            getnew(ip);
+        };
 
-    function getnew(refresh) {
-        $('[data-id="geo"]').text('¯\\_(ツ)_/¯');
-        $.when(
-                $.getJSON("https://get.geojs.io/v1/ip/geo/" + refresh + ".js?callback=?"),
-                $.getJSON("https://get.geojs.io/v1/dns/ptr/" + refresh + ".js?callback=?")
+        function getnew(refresh) {
+            $('[geo-id]').text('Searching...');
+            $('[geo-id]').attr('geo-id', 'blank');
+            $.when(
+                    $.getJSON("https://get.geojs.io/v1/dns/ptr/" + refresh + ".js?callback=?"),
+                    $.getJSON("https://get.geojs.io/v1/ip/geo/" + refresh + ".js?callback=?")
+
+                )
+                .done(function(geo_data, ptr) {
+                    _.forOwn(geo_data[0], function(geoValue, geoKey) {
+                        $('#geojs_' + geoKey).text(geoValue);
+                    });
+                    _.forOwn(ptr[0], function(geoValue, geoKey) {
+                        $('#geojs_' + geoKey).text(geoValue);
+                    });
+                    $('[geo-id="blank"]').text('¯\\_(ツ)_/¯ - No data found');
+                });
+
+        };
+
+        $(document).ready(function() {
+            var $extend = $("#user_ip");
+            $.getJSON('https://get.geojs.io/v1/ip.js?callback=?',
+                function(json) {
+                    $extend.append(' ' + json.ip);
+                }
             )
-            .done(function(geo_data, ptr) {
-
-                _.forOwn(geo_data[0], function(geoValue, geoKey) {
-                    $('#geojs_' + geoKey).text(geoValue);
+            $.when(
+                    $.getJSON("https://get.geojs.io/v1/ip/geo.js?callback=?"),
+                    $.getJSON("https://get.geojs.io/v1/dns/ptr.js?callback=?")
+                )
+                .done(function(geo_data, ptr) {
+                    _.forOwn(geo_data[0], function(geoValue, geoKey) {
+                        $('#geojs_' + geoKey).text(geoValue);
+                    });
+                    _.forOwn(ptr[0], function(geoValue, geoKey) {
+                        $('#geojs_' + geoKey).text(geoValue);
+                    });
                 });
-                _.forOwn(ptr[0], function(geoValue, geoKey) {
-                    $('#geojs_' + geoKey).text(geoValue);
-                });
-
-            });
-    };
+        });
     </script>
 </body>
 
