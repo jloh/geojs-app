@@ -184,9 +184,11 @@
                 .done(function(geo_data, ptr) {
                     _.forOwn(geo_data[0], function(geoValue, geoKey) {
                         $('#geojs_' + geoKey).text(geoValue);
+                        $('#geojs_' + geoKey).attr('geo-id', 'found');
                     });
                     _.forOwn(ptr[0], function(geoValue, geoKey) {
                         $('#geojs_' + geoKey).text(geoValue);
+                        $('#geojs_' + geoKey).attr('geo-id', 'found');
                     });
                     $('[geo-id="blank"]').text('¯\\_(ツ)_/¯ - No data found');
                 });
