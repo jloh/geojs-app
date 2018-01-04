@@ -176,22 +176,23 @@
         function getnew(refresh) {
             $('[geo-id]').text('Searching...');
             $('[geo-id]').attr('geo-id', 'blank');
-            $.when(
-                    $.getJSON("https://get.geojs.io/v1/dns/ptr/" + refresh + ".js?callback=?"),
-                    $.getJSON("https://get.geojs.io/v1/ip/geo/" + refresh + ".js?callback=?")
 
-                )
-                .done(function(geo_data, ptr) {
-                    _.forOwn(geo_data[0], function(geoValue, geoKey) {
-                        $('#geojs_' + geoKey).text(geoValue);
-                        $('#geojs_' + geoKey).attr('geo-id', 'found');
-                    });
-                    _.forOwn(ptr[0], function(geoValue, geoKey) {
-                        $('#geojs_' + geoKey).text(geoValue);
-                        $('#geojs_' + geoKey).attr('geo-id', 'found');
-                    });
-                    $('[geo-id="blank"]').text('¯\\_(ツ)_/¯ - No data found');
+            var reverse = $.getJSON("https://get.geojs.io/v1/dns/ptr/" + refresh + ".js?callback=?").then(function(ptr) {
+                _.forOwn(ptr, function(geoValue, geoKey) {
+	                $('#geojs_' + geoKey).text(geoValue);
+                    $('#geojs_' + geoKey).attr('geo-id', 'found');
                 });
+            });
+            var geo = $.getJSON("https://get.geojs.io/v1/ip/geo/" + refresh + ".js?callback=?").then(function(geo) {
+                _.forOwn(geo, function(geoValue, geoKey) {
+                    $('#geojs_' + geoKey).text(geoValue);
+                    $('#geojs_' + geoKey).attr('geo-id', 'found');
+                });
+            });
+
+            $('[geo-id="blank"]').text('¯\\_(ツ)_/¯ - No data found');
+            return $.when(reverse, geo)
+
 
         };
 
