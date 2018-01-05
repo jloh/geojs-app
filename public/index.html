@@ -199,19 +199,10 @@
             $('[geo-id="blank"]').text('¯\\_(ツ)_/¯ - No data found');
         }
 
-        $(document).ready(function() {
-            var $extend = $("#user_ip");
-            $.getJSON('https://get.geojs.io/v1/ip.js?callback=?',
-                function(json) {
-                    $extend.append(' ' + json.ip);
-                }
-            )
-            $('[geo-id]').text('Searching...');
-            $('[geo-id]').attr('geo-id', 'blank');
-
+        function loadIp() {
             var reverse = $.getJSON("https://get.geojs.io/v1/dns/ptr.js?callback=?").then(function(ptr) {
                 _.forOwn(ptr, function(geoValue, geoKey) {
-	                $('#geojs_' + geoKey).text(geoValue);
+                    $('#geojs_' + geoKey).text(geoValue);
                     $('#geojs_' + geoKey).attr('geo-id', 'found');
                 });
             });
@@ -222,7 +213,20 @@
                 });
             });
 
-            $.when(reverse, geo).then($('[geo-id="blank"]').text('¯\\_(ツ)_/¯ - No data found'))
+            return $.when(reverse, geo);
+        }
+
+        $(document).ready(function() {
+            var $extend = $("#user_ip");
+            $.getJSON('https://get.geojs.io/v1/ip.js?callback=?',
+                function(json) {
+                    $extend.append(' ' + json.ip);
+                }
+            )
+
+            clearResults();
+            loadIp().then(userShrug);
+
         });
     </script>
 </body>
