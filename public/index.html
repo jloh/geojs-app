@@ -222,8 +222,7 @@
                 });
             });
 
-            $('[geo-id="blank"]').text('¯\\_(ツ)_/¯ - No data found');
-            $.when(reverse, geo)
+            $.when(reverse, geo).then($('[geo-id="blank"]').text('¯\\_(ツ)_/¯ - No data found'))
         });
     </script>
 </body>
