@@ -82,7 +82,8 @@
             <div class="row">
                 <div class="col-lg-12 text-center">
                     <h1>Hello <span id="user_ip"></span>!</h1>
-                    <p>Enter an IP in below to lookup its information.</p>
+                    <p>Enter an IP below to lookup its information</p>
+                    <p><noscript><b>Hey, looks like you've got JavaScript disabled. None of this will work like that sadly!</b></noscript></p>
                 </div>
             </div>
         </div>
@@ -92,10 +93,13 @@
                     <form id="ip-lookup">
                         <label class="sr-only" for="inlineFormInput">IP Address</label>
                         <div class="input-group input-group-lg">
-                            <input type="text" class="form-control input-lg" name="ip" id="lookup" placeholder="IP Address">
+                            <input type="text" class="form-control input-lg" name="ip" id="lookup" placeholder="IP Address" required>
                             <span class="input-group-btn">
-                <button type="submit" class="btn btn-primary btn-lg">Submit</button>
-              </span>
+                                <button type="submit" class="btn btn-primary btn-lg">Submit</button>
+                            </span>
+                            <div class="invalid-feedback">
+                                Please provide a valid IP
+                            </div>
                         </div>
                     </form>
                 </div>
@@ -104,9 +108,9 @@
         <div class="container">
             <div class="row justify-content-lg-center">
                 <div class="col-lg-10">
-                    <h1 class="text-center">Results</h1>
+                    <h1 class="text-center">Results <span id="results_ip"></span></h1>
                     <div class="table-responsive">
-                        <table class="table table-bordered table-hover" id="geo-output">
+                        <table class="table table-bordered" id="geo-output">
                             <tbody id="geo-table">
                                 <tr>
                                     <th>IP Address</th>
@@ -160,6 +164,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.4/lodash.min.js" integrity="sha256-8E6QUcFg1KTnpEU8TFGhpTGHw5fJqB9vCms3OhAYLqw=" crossorigin="anonymous"></script>
+    <script src="/js/validate-ip.js"></script>
     <script>
         $("#ip-lookup").submit(function(event) {
             // cancels the form submission
@@ -167,10 +172,18 @@
             submitForm();
         });
 
-       function submitForm() {
+        function submitForm() {
             var ip = $("#lookup").val();
-            clearResults();
-            getnew(ip).then(userShrug);
+            var ipInput = document.getElementById('lookup');
+            if (validateIP(ip) === false) {
+                ipInput.classList.add('is-invalid');
+            } else {
+                ipInput.classList.remove('is-invalid');
+                ipInput.classList.add('was-validated');
+                clearResults();
+                updateResultsIp(ip);
+                getnew(ip).then(userShrug);
+            }
         };
 
         function clearResults() {
@@ -199,6 +212,10 @@
             $('[geo-id="blank"]').text('¯\\_(ツ)_/¯ - No data found');
         }
 
+        function updateResultsIp(ip) {
+            $('#results_ip').text('for ' + ip)
+        }
+
         function loadIp() {
             var reverse = $.getJSON("https://get.geojs.io/v1/dns/ptr.js?callback=?").then(function(ptr) {
                 _.forOwn(ptr, function(geoValue, geoKey) {
@@ -221,6 +238,7 @@
             $.getJSON('https://get.geojs.io/v1/ip.js?callback=?',
                 function(json) {
                     $extend.append(' ' + json.ip);
+                    updateResultsIp(json.ip);
                 }
             )
 
