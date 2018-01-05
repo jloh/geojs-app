@@ -169,14 +169,16 @@
 
        function submitForm() {
             var ip = $("#lookup").val();
-            var request = '';
-            getnew(ip);
+            clearResults();
+            getnew(ip).then(userShrug);
         };
 
-        function getnew(refresh) {
+        function clearResults() {
             $('[geo-id]').text('Searching...');
             $('[geo-id]').attr('geo-id', 'blank');
+        }
 
+        function getnew(refresh) {
             var reverse = $.getJSON("https://get.geojs.io/v1/dns/ptr/" + refresh + ".js?callback=?").then(function(ptr) {
                 _.forOwn(ptr, function(geoValue, geoKey) {
 	                $('#geojs_' + geoKey).text(geoValue);
@@ -190,11 +192,12 @@
                 });
             });
 
-            $('[geo-id="blank"]').text('¯\\_(ツ)_/¯ - No data found');
             return $.when(reverse, geo)
-
-
         };
+
+        function userShrug() {
+            $('[geo-id="blank"]').text('¯\\_(ツ)_/¯ - No data found');
+        }
 
         $(document).ready(function() {
             var $extend = $("#user_ip");
