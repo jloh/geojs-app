@@ -1,0 +1,31 @@
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-XSS-Protection = "1; mode=block"
+    X-GitHub = jloh/app.geojs.io
+    X-Made-By = @itsjloh
+    # Preload links
+    Link: </css/main.css>; rel=preload; as=stylesheet
+    Link: </js/app.js>; rel=preload; as=script
+    Link: </js/validate-ip.js>; rel=preload; as=script
+    # CSP Policy
+    Content-Security-Policy-Report-Only = '''
+    default-src 'none' ; \
+    script-src 'self' maxcdn.bootstrapcdn.com code.jquery.com cdnjs.cloudflare.com; \
+    style-src 'self' maxcdn.bootstrapcdn.com; \
+    font-src 'none' ; \
+    connect-src get.geojs.io; \
+    form-action 'self' ; \
+    upgrade-insecure-requests; \
+    block-all-mixed-content; \
+    disown-opener; \
+    report-uri https://jloh.report-uri.com/r/d/csp/reportOnly;'''
+
+# Redirect everything from /s/ for direct linking
+# https://www.netlify.com/docs/redirects/#structured-configuration
+[[redirects]]
+  from   = "/s/*"
+  to     = "/index.html"
+  status = 200
+  force  = true

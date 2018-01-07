@@ -1,0 +1,43 @@
+.vertical-center {
+    min-height: 70%;
+    /* Fallback for browsers do NOT support vh unit */
+    min-height: 70vh;
+    /* These two lines are counted as one :-)       */
+    display: flex;
+    align-items: center;
+}
+/* Make bordered table slightly darker */
+.table-bordered th {
+    border: 1px solid rgba(0, 0, 0, .15);
+    border-radius: .3rem;
+}
+
+.table-bordered td {
+    border-radius: .3rem;
+    border: 1px solid rgba(0, 0, 0, .15);
+}
+
+.table {
+    background: #fff;
+    border-radius: 4px 4px 4px 4px;
+    border: 1px solid rgba(0, 0, 0, .15);
+}
+
+.welcome {
+    margin-top: 50px;
+    margin-bottom: 10px;
+}
+
+.lookup-form {
+    margin-bottom: 20px;
+}
+
+.Site {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+.Site-content {
+    flex: 1;
+}
