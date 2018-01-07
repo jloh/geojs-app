@@ -57,14 +57,14 @@
 <body class="Site" style="background: #EEEEEE;">
     <main class="Site-content">
         <nav class="navbar navbar-expand-lg navbar-dark bg-faded" style="background-color: #e84e40;">
-            <a class="navbar-brand" href="#">GeoJS</a>
+            <a class="navbar-brand" href="/">GeoJS</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="https://geojs.io/docs/">Docs</a>
@@ -169,20 +169,25 @@
         $("#ip-lookup").submit(function(event) {
             // cancels the form submission
             event.preventDefault();
-            submitForm();
+            var ip = $("#lookup").val();
+            submitForm(ip);
         });
 
-        function submitForm() {
-            var ip = $("#lookup").val();
+        function getResults(ip) {
+            clearResults();
+            updateResultsIp(ip);
+            getnew(ip).then(userShrug);
+        };
+
+        function submitForm(ip) {
             var ipInput = document.getElementById('lookup');
             if (validateIP(ip) === false) {
                 ipInput.classList.add('is-invalid');
             } else {
                 ipInput.classList.remove('is-invalid');
                 ipInput.classList.add('was-validated');
-                clearResults();
-                updateResultsIp(ip);
-                getnew(ip).then(userShrug);
+                getResults(ip);
+                changeUrl(ip, '/s/' + ip);
             }
         };
 
@@ -194,7 +199,7 @@
         function getnew(refresh) {
             var reverse = $.getJSON("https://get.geojs.io/v1/dns/ptr/" + refresh + ".js?callback=?").then(function(ptr) {
                 _.forOwn(ptr, function(geoValue, geoKey) {
-	                $('#geojs_' + geoKey).text(geoValue);
+                    $('#geojs_' + geoKey).text(geoValue);
                     $('#geojs_' + geoKey).attr('geo-id', 'found');
                 });
             });
@@ -207,6 +212,15 @@
 
             return $.when(reverse, geo)
         };
+
+        function changeUrl(page, url) {
+            if (typeof (history.pushState) != "undefined") {
+                var obj = { Page: page, Url: url };
+                history.pushState(obj, obj.Page, obj.Url);
+            } else {
+                console.log("Browser does not support HTML5 - not changing URL");
+            }
+        }
 
         function userShrug() {
             $('[geo-id="blank"]').text('¯\\_(ツ)_/¯ - No data found');
@@ -224,6 +238,7 @@
                 });
             });
             var geo = $.getJSON("https://get.geojs.io/v1/ip/geo.js?callback=?").then(function(geo) {
+                updateResultsIp(geo.ip)
                 _.forOwn(geo, function(geoValue, geoKey) {
                     $('#geojs_' + geoKey).text(geoValue);
                     $('#geojs_' + geoKey).attr('geo-id', 'found');
@@ -233,19 +248,34 @@
             return $.when(reverse, geo);
         }
 
+        function runApp() {
+            if (document.location.pathname.indexOf("/s/") == 0) {
+                var ip = document.location.pathname.match('/s/(.*)')[1]
+                if (validateIP(ip) === false) {
+                    changeUrl('geojs-home', '/')
+                    clearResults();
+                    loadIp().then(userShrug);
+                } else {
+                    getResults(ip);
+                }
+            } else {
+                clearResults();
+                loadIp().then(userShrug);
+            }
+        }
+
         $(document).ready(function() {
             var $extend = $("#user_ip");
             $.getJSON('https://get.geojs.io/v1/ip.js?callback=?',
                 function(json) {
                     $extend.append(' ' + json.ip);
-                    updateResultsIp(json.ip);
                 }
             )
-
-            clearResults();
-            loadIp().then(userShrug);
-
+            runApp();
         });
+        addEventListener("popstate", function (event) {
+            runApp();
+        })
     </script>
 </body>
 
