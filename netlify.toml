@@ -3,6 +3,7 @@
   [headers.values]
     X-Frame-Options = "DENY"
     X-XSS-Protection = "1; mode=block"
+    X-Content-Type-Options = "nosniff"
     X-GitHub = "jloh/app.geojs.io"
     X-Made-By = "@itsjloh"
     # Preload links
