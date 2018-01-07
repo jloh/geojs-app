@@ -36,8 +36,22 @@
     display: flex;
     min-height: 100vh;
     flex-direction: column;
+    background: #EEEEEE;
 }
 
 .Site-content {
     flex: 1;
+}
+
+.navbar {
+    background-color: #e84e40;
+}
+
+.author-link {
+    color: #464a4c;
+    padding-left: .2rem;
+}
+
+.status-link {
+    color: #464a4c;
 }
