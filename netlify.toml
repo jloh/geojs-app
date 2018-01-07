@@ -1,0 +1,41 @@
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-XSS-Protection = "1; mode=block"
+    X-GitHub = "jloh/app.geojs.io"
+    X-Made-By = "@itsjloh"
+    # Preload links
+    Link = '''
+    </css/main.css>; rel=preload; as=style, 
+    </js/app.js>; rel=preload; as=script, 
+    </js/validate-ip.js>; rel=preload; as=script'''
+    # CSP Policy
+    # Report only
+    # Note: Report only policy doesn't have 'upgrade-insecure-requests' as this does nothing in report-only
+    Content-Security-Policy-Report-Only = '''
+    default-src 'none' ; 
+    script-src 'self' maxcdn.bootstrapcdn.com code.jquery.com cdnjs.cloudflare.com get.geojs.io; 
+    style-src 'self' maxcdn.bootstrapcdn.com; 
+    font-src 'none' ; 
+    form-action 'self' ; 
+    block-all-mixed-content; 
+    report-uri https://jloh.report-uri.com/r/d/csp/reportOnly;'''
+    # Live rules -  be careful!
+    Content-Security-Policy = '''
+    default-src 'none' ; 
+    script-src 'self' maxcdn.bootstrapcdn.com code.jquery.com cdnjs.cloudflare.com get.geojs.io; 
+    style-src 'self' maxcdn.bootstrapcdn.com; 
+    font-src 'none' ; 
+    form-action 'self' ; 
+    upgrade-insecure-requests; 
+    block-all-mixed-content;  
+    report-uri https://jloh.report-uri.com/r/d/csp/enforce;'''
+
+# Redirect everything from /s/ for direct linking
+# https://www.netlify.com/docs/redirects/#structured-configuration
+[[redirects]]
+  from   = "/s/*"
+  to     = "/index.html"
+  status = 200
+  force  = true

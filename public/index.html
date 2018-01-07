@@ -5,58 +5,14 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/main.css?v=1.0.0">
     <link href="//get.geojs.io" rel="dns-prefetch">
     <title>GeoJS Web App</title>
-    <style>
-    .vertical-center {
-        min-height: 70%;
-        /* Fallback for browsers do NOT support vh unit */
-        min-height: 70vh;
-        /* These two lines are counted as one :-)       */
-        display: flex;
-        align-items: center;
-    }
-    /* Make bordered table slightly darker */
-    .table-bordered th {
-        border: 1px solid rgba(0, 0, 0, .15);
-        border-radius: .3rem;
-    }
-
-    .table-bordered td {
-        border-radius: .3rem;
-        border: 1px solid rgba(0, 0, 0, .15);
-    }
-
-    .table {
-        background: #fff;
-        border-radius: 4px 4px 4px 4px;
-        border: 1px solid rgba(0, 0, 0, .15);
-    }
-
-    .welcome {
-        margin-top: 50px;
-        margin-bottom: 10px;
-    }
-
-    .lookup-form {
-        margin-bottom: 20px;
-    }
-
-    .Site {
-        display: flex;
-        min-height: 100vh;
-        flex-direction: column;
-    }
-
-    .Site-content {
-        flex: 1;
-    }
-    </style>
 </head>
 
-<body class="Site" style="background: #EEEEEE;">
+<body class="Site">
     <main class="Site-content">
-        <nav class="navbar navbar-expand-lg navbar-dark bg-faded" style="background-color: #e84e40;">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-faded">
             <a class="navbar-brand" href="/">GeoJS</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -153,10 +109,10 @@
     </main>
     <footer class="d-flex p-2 footer">
         <div class="d-inline-flex p-2">
-            GeoJS is a project by <a href="https://twitter.com/itsjloh" style="color: #464a4c; padding-left: .2rem;" title="Twitter">@itsjloh</a>
+            GeoJS is a project by <a href="https://twitter.com/itsjloh" class="author-link" title="Twitter">@itsjloh</a>
         </div>
         <div class="d-inline-flex p-2 ml-auto">
-            <a href="http://status.geojs.io" style="color: #464a4c" title="GeoJS Status">Service status</a>
+            <a href="http://status.geojs.io" class="status-link" title="GeoJS Status">Service status</a>
         </div>
     </footer>
     <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
@@ -164,119 +120,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.4/lodash.min.js" integrity="sha256-8E6QUcFg1KTnpEU8TFGhpTGHw5fJqB9vCms3OhAYLqw=" crossorigin="anonymous"></script>
-    <script src="/js/validate-ip.js"></script>
-    <script>
-        $("#ip-lookup").submit(function(event) {
-            // cancels the form submission
-            event.preventDefault();
-            var ip = $("#lookup").val();
-            submitForm(ip);
-        });
-
-        function getResults(ip) {
-            clearResults();
-            updateResultsIp(ip);
-            getnew(ip).then(userShrug);
-        };
-
-        function submitForm(ip) {
-            var ipInput = document.getElementById('lookup');
-            if (validateIP(ip) === false) {
-                ipInput.classList.add('is-invalid');
-            } else {
-                ipInput.classList.remove('is-invalid');
-                ipInput.classList.add('was-validated');
-                getResults(ip);
-                changeUrl(ip, '/s/' + ip);
-            }
-        };
-
-        function clearResults() {
-            $('[geo-id]').text('Searching...');
-            $('[geo-id]').attr('geo-id', 'blank');
-        }
-
-        function getnew(refresh) {
-            var reverse = $.getJSON("https://get.geojs.io/v1/dns/ptr/" + refresh + ".js?callback=?").then(function(ptr) {
-                _.forOwn(ptr, function(geoValue, geoKey) {
-                    $('#geojs_' + geoKey).text(geoValue);
-                    $('#geojs_' + geoKey).attr('geo-id', 'found');
-                });
-            });
-            var geo = $.getJSON("https://get.geojs.io/v1/ip/geo/" + refresh + ".js?callback=?").then(function(geo) {
-                _.forOwn(geo, function(geoValue, geoKey) {
-                    $('#geojs_' + geoKey).text(geoValue);
-                    $('#geojs_' + geoKey).attr('geo-id', 'found');
-                });
-            });
-
-            return $.when(reverse, geo)
-        };
-
-        function changeUrl(page, url) {
-            if (typeof (history.pushState) != "undefined") {
-                var obj = { Page: page, Url: url };
-                history.pushState(obj, obj.Page, obj.Url);
-            } else {
-                console.log("Browser does not support HTML5 - not changing URL");
-            }
-        }
-
-        function userShrug() {
-            $('[geo-id="blank"]').text('¯\\_(ツ)_/¯ - No data found');
-        }
-
-        function updateResultsIp(ip) {
-            $('#results_ip').text('for ' + ip)
-        }
-
-        function loadIp() {
-            var reverse = $.getJSON("https://get.geojs.io/v1/dns/ptr.js?callback=?").then(function(ptr) {
-                _.forOwn(ptr, function(geoValue, geoKey) {
-                    $('#geojs_' + geoKey).text(geoValue);
-                    $('#geojs_' + geoKey).attr('geo-id', 'found');
-                });
-            });
-            var geo = $.getJSON("https://get.geojs.io/v1/ip/geo.js?callback=?").then(function(geo) {
-                updateResultsIp(geo.ip)
-                _.forOwn(geo, function(geoValue, geoKey) {
-                    $('#geojs_' + geoKey).text(geoValue);
-                    $('#geojs_' + geoKey).attr('geo-id', 'found');
-                });
-            });
-
-            return $.when(reverse, geo);
-        }
-
-        function runApp() {
-            if (document.location.pathname.indexOf("/s/") == 0) {
-                var ip = document.location.pathname.match('/s/(.*)')[1]
-                if (validateIP(ip) === false) {
-                    changeUrl('geojs-home', '/')
-                    clearResults();
-                    loadIp().then(userShrug);
-                } else {
-                    getResults(ip);
-                }
-            } else {
-                clearResults();
-                loadIp().then(userShrug);
-            }
-        }
-
-        $(document).ready(function() {
-            var $extend = $("#user_ip");
-            $.getJSON('https://get.geojs.io/v1/ip.js?callback=?',
-                function(json) {
-                    $extend.append(' ' + json.ip);
-                }
-            )
-            runApp();
-        });
-        addEventListener("popstate", function (event) {
-            runApp();
-        })
-    </script>
+    <script src="/js/validate-ip.js?v=1.0.0"></script>
+    <script src="/js/app.js?v=1.0.0"></script>
 </body>
 
 </html>
