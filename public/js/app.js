@@ -38,12 +38,12 @@ function printResult(k, v) {
 function getNew(refresh) {
     var reverse = $.getJSON("https://get.geojs.io/v1/dns/ptr/" + refresh + ".js?callback=?").then(function(ptr) {
         _.forOwn(ptr, function(geoValue, geoKey) {
-            printResult(geoValue, geoKey)
+            printResult(geoKey, geoValue)
         });
     });
     var geo = $.getJSON("https://get.geojs.io/v1/ip/geo/" + refresh + ".js?callback=?").then(function(geo) {
         _.forOwn(geo, function(geoValue, geoKey) {
-            printResult(geoValue, geoKey)
+            printResult(geoKey, geoValue)
         });
     });
     return $.when(reverse, geo)
@@ -61,13 +61,13 @@ function changeUrl(page, url) {
 function loadIp() {
     var reverse = $.getJSON("https://get.geojs.io/v1/dns/ptr.js?callback=?").then(function(ptr) {
         _.forOwn(ptr, function(geoValue, geoKey) {
-            printResult(geoValue, geoKey)
+            printResult(geoKey, geoValue)
         });
     });
     var geo = $.getJSON("https://get.geojs.io/v1/ip/geo.js?callback=?").then(function(geo) {
         updateResultsIp(geo.ip)
         _.forOwn(geo, function(geoValue, geoKey) {
-            printResult(geoValue, geoKey)
+            printResult(geoKey, geoValue)
         });
     });
     return $.when(reverse, geo);
