@@ -12,13 +12,13 @@
     </js/validate-ip.js>; rel=preload; as=script'''
     # CSP Policy
     # Report only
+    # Note: Report only policy doesn't have 'upgrade-insecure-requests' as this does nothing in report-only
     Content-Security-Policy-Report-Only = '''
     default-src 'none' ; 
     script-src 'self' maxcdn.bootstrapcdn.com code.jquery.com cdnjs.cloudflare.com get.geojs.io; 
     style-src 'self' maxcdn.bootstrapcdn.com; 
     font-src 'none' ; 
     form-action 'self' ; 
-    upgrade-insecure-requests; 
     block-all-mixed-content; 
     report-uri https://jloh.report-uri.com/r/d/csp/reportOnly;'''
     # Live rules -  be careful!
