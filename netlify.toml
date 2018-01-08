@@ -8,9 +8,9 @@
     X-Made-By = "@itsjloh"
     # Preload links
     Link = '''
-    </css/main.css>; rel=preload; as=style, 
-    </js/app.js>; rel=preload; as=script, 
-    </js/validate-ip.js>; rel=preload; as=script'''
+    </css/main.css?v=1.0.0>; rel=preload; as=style, 
+    </js/app.js?v=1.0.0>; rel=preload; as=script, 
+    </js/validate-ip.js?v=1.0.0>; rel=preload; as=script'''
     # CSP Policy
     # Report only
     # Note: Report only policy doesn't have 'upgrade-insecure-requests' as this does nothing in report-only
