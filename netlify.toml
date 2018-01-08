@@ -6,11 +6,6 @@
     X-Content-Type-Options = "nosniff"
     X-GitHub = "jloh/app.geojs.io"
     X-Made-By = "@itsjloh"
-    # Preload links
-    Link = '''
-    </css/main.css?v=1.0.0>; rel=preload; as=style, 
-    </js/app.js?v=1.0.0>; rel=preload; as=script, 
-    </js/validate-ip.js?v=1.0.0>; rel=preload; as=script'''
     # CSP Policy
     # Report only
     # Note: Report only policy doesn't have 'upgrade-insecure-requests' as this does nothing in report-only
@@ -34,6 +29,15 @@
     upgrade-insecure-requests; 
     block-all-mixed-content;  
     report-uri https://jloh.report-uri.com/r/d/csp/enforce;'''
+
+[[headers]]
+  for = "/index.html"
+  [headers.values]
+    # Preload links
+    Link = '''
+    </css/main.css?v=1.0.0>; rel=preload; as=style, 
+    </js/app.js?v=1.0.0>; rel=preload; as=script, 
+    </js/validate-ip.js?v=1.0.0>; rel=preload; as=script'''
 
 # Redirect everything from /s/ for direct linking
 # https://www.netlify.com/docs/redirects/#structured-configuration
