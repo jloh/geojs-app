@@ -31,7 +31,10 @@
     report-uri https://jloh.report-uri.com/r/d/csp/enforce;'''
 
 [[headers]]
-  for = "/index.html"
+  for = [
+    "/",
+    "/s/*"
+  ]
   [headers.values]
     # Preload links
     Link = '''
