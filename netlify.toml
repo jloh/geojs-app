@@ -2,11 +2,12 @@
   for = "/*"
   [headers.values]
     X-Frame-Options = "DENY"
-    X-XSS-Protection = "1; mode=block"
+    X-XSS-Protection = "1; mode=block; report=https://jloh.report-uri.com/r/d/xss/enforce"
     X-Content-Type-Options = "nosniff"
     X-GitHub = "jloh/app.geojs.io"
     X-Made-By = "@itsjloh"
     Strict-Transport-Security = "max-age=63072000; includeSubDomains; preload"
+    Referrer-Policy = no-referrer-when-downgrade
     # CSP Policy
     # Report only
     # Note: Report only policy doesn't have 'upgrade-insecure-requests' as this does nothing in report-only
