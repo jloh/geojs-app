@@ -7,7 +7,7 @@
     X-GitHub = "jloh/app.geojs.io"
     X-Made-By = "@itsjloh"
     Strict-Transport-Security = "max-age=63072000; includeSubDomains; preload"
-    Referrer-Policy = no-referrer-when-downgrade
+    Referrer-Policy = "no-referrer-when-downgrade"
     # CSP Policy
     # Report only
     # Note: Report only policy doesn't have 'upgrade-insecure-requests' as this does nothing in report-only
