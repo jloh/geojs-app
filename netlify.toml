@@ -23,13 +23,14 @@
     # Live rules -  be careful!
     Content-Security-Policy = '''
     default-src 'none' ; 
-    script-src 'self' maxcdn.bootstrapcdn.com code.jquery.com cdnjs.cloudflare.com get.geojs.io; 
-    style-src 'self' maxcdn.bootstrapcdn.com; 
-    img-src 'self' data: ; 
-    font-src 'none' ; 
-    form-action 'self' ; 
-    upgrade-insecure-requests; 
-    block-all-mixed-content;  
+    script-src 'self' maxcdn.bootstrapcdn.com code.jquery.com cdnjs.cloudflare.com get.geojs.io cdn.simpleanalytics.io;
+    style-src 'self' maxcdn.bootstrapcdn.com;
+    img-src 'self' data: api.simpleanalytics.io;
+    connect-src api.simpleanalytics.io;
+    font-src 'none' ;
+    form-action 'self' ;
+    upgrade-insecure-requests;
+    block-all-mixed-content;
     report-uri https://jloh.report-uri.com/r/d/csp/enforce;'''
 
 [[headers]]
