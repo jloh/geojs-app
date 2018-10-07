@@ -23,8 +23,8 @@
     # Live rules -  be careful!
     Content-Security-Policy = '''
     default-src 'none' ; 
-    script-src 'self' maxcdn.bootstrapcdn.com code.jquery.com cdnjs.cloudflare.com get.geojs.io cdn.simpleanalytics.io;
-    style-src 'self' maxcdn.bootstrapcdn.com;
+    script-src 'self' stackpath.bootstrapcdn.com code.jquery.com cdnjs.cloudflare.com get.geojs.io cdn.simpleanalytics.io;
+    style-src 'self' stackpath.bootstrapcdn.com;
     img-src 'self' data: api.simpleanalytics.io;
     connect-src api.simpleanalytics.io;
     font-src 'none' ;
