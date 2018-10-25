@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <link rel="stylesheet" href="/css/main.css?v=1.0.0">
+    <link rel="stylesheet" href="css/main.css?v=1.0.0">
     <link href="//get.geojs.io" rel="dns-prefetch">
     <title>GeoJS Web App</title>
 </head>
@@ -48,12 +48,12 @@
                         <label class="sr-only" for="inlineFormInput">IP Address</label>
                         <div class="input-group input-group-lg">
                             <input type="text" class="form-control input-lg" name="ip" id="lookup" placeholder="IP Address" required>
-                            <span class="input-group-btn">
-                                <button type="submit" class="btn btn-primary btn-lg">Submit</button>
-                            </span>
-                            <div class="invalid-feedback">
-                                Please provide a valid IP
+                            <div class="invalid-feedback order-last">
+                                    Please provide a valid IP
                             </div>
+                            <span class="input-group-append">
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </span>
                         </div>
                     </form>
                 </div>
@@ -122,8 +122,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.4/lodash.min.js" integrity="sha256-8E6QUcFg1KTnpEU8TFGhpTGHw5fJqB9vCms3OhAYLqw=" crossorigin="anonymous"></script>
-    <script src="/js/validate-ip.js?v=1.0.0"></script>
-    <script src="/js/app.js?v=1.0.0"></script>
+    <script src="js/validate-ip.js?v=1.0.0"></script>
+    <script src="js/app.js?v=1.0.0"></script>
     <script async src="https://cdn.simpleanalytics.io/hello.js"></script>
     <noscript><img src="https://api.simpleanalytics.io/hello.gif" alt=""></noscript>
 </body>
