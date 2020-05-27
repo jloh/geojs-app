@@ -23,10 +23,10 @@
     # Live rules -  be careful!
     Content-Security-Policy = '''
     default-src 'none' ; 
-    script-src 'self' stackpath.bootstrapcdn.com code.jquery.com cdnjs.cloudflare.com get.geojs.io cdn.simpleanalytics.io;
+    script-src 'self' stackpath.bootstrapcdn.com code.jquery.com cdnjs.cloudflare.com get.geojs.io cdn.simpleanalytics.io sa.geojs.io;
     style-src 'self' stackpath.bootstrapcdn.com;
-    img-src 'self' data: api.simpleanalytics.io;
-    connect-src api.simpleanalytics.io;
+    img-src 'self' data: api.simpleanalytics.io sa.geojs.io;
+    connect-src api.simpleanalytics.io sa.geojs.io;
     font-src 'none' ;
     form-action 'self' ;
     upgrade-insecure-requests;
