@@ -6,3 +6,6 @@ node_modules
 .env
 .env.*
 !.env.example
+
+# Ignore .netlify dir which Svelte uses
+.netlify

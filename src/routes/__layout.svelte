@@ -1,30 +1,28 @@
 <script>
-	import "../app.css";
+	import '../app.css';
 </script>
 
-<nav class="" aria-label="main navigation">
-	<div class="container">
-		<div class="navbar-brand">
-			<a class="navbar-item" href="/">
-				<!-- <img alt="GeoJS" src="https://www.geojs.io/img/logo.png"> -->
-			</a>
-			<div class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="topmenu-nav">
-				<span></span>
-				<span></span>
-				<span></span>
+<div class="border-b-2 mb-6">
+	<nav id="header" class="mx-4 mt-2">
+		<div class="flex flex-wrap mx-auto mb-2">
+			<div class="flex flex-1 md:w-auto sm:text-left mt-2">
+				<a class="text-2xl" title="Home" href="/">GeoJS</a>
+				<a class="text-lg ml-2" title="Home" href="/">App</a>
+				<a class="text-lg ml-2" title="GeoJS documentation" href="https://geojs.io/docs/">Docs</a>
+				<a class="text-lg ml-2" title="GeoJS demo page" href="https://geojs.io/#demo">Demo</a>
+				<a class="text-lg ml-2" title="Home" href="https://jloh.co/tag/geojs/">Blog</a>
+			</div>
+			<div class="flex-grow lg:flex lg:w-auto mt-2 justify-center sm:justify-end" id="nav-content">
+				<div class="flex justify-center sm:justify-end flex-1 text-lg">
+					<span class="inline-block">REST/JSON/JSONP IP Interface for Geo Lookups</span>
+				</div>
 			</div>
 		</div>
-		<div class="navbar-menu" id="topmenu-nav">
-			<div class="navbar-start">
-				<a class="navbar-item" title="Home" href="/">Home</a>
-				<a class="navbar-item" title="Docs" href="https://www.geojs.io/docs/">Docs</a>
-				<a class="navbar-item" title="Blog" href="https://www.geojs.io/blog/">Blog</a>
-				<a class="navbar-item" title="1.1.1.1" href="/s/1.1.1.1">1.1.1.1</a>
-				<a class="navbar-item" title="1.1.1.1" href="/s/1.1.1.2">1.1.1.2</a>
-			</div>
-		</div>
-	</div>
-</nav>
+	</nav>
+</div>
 
+<div class="">
+	<slot />
+</div>
 
-<slot/>
+<footer>Here is some footer</footer>

@@ -1,70 +1,38 @@
 <script context="module">
 	import { validateIP } from '$lib/validIP.js';
 	export async function load({ params, fetch, session, stuff }) {
-		if (! validateIP(params.slug)) {
+		if (!validateIP(params.slug)) {
 			return {
 				status: 404
-			}
+			};
 		}
-		const response = await fetch(`https://get.geojs.io/v1/ip/geo/${params.slug}.json`);
+		const geo = await fetch(`https://get.geojs.io/v1/ip/geo/${params.slug}.json`);
+		const ptr = await fetch(`https://get.geojs.io/v1/dns/ptr/${params.slug}.json`);
 
 		return {
-			status: response.status,
+			status: geo.status,
 			props: {
-				lookup: response.ok && (await response.json())
+				geoLookup: geo.ok && (await geo.json()),
+				ptrLookup: ptr.ok && ptr.json()
 			}
 		};
 	}
 </script>
 
 <script>
-	export let lookup;
+	import Search from '$lib/components/Search.svelte';
+	import ResultTable from '$lib/components/ResultTable.svelte';
+	export let geoLookup;
+	export let ptrLookup;
 </script>
 
 <svelte:head>
-<title>{lookup.ip} IP address information | GeoJS</title>
+	<title>{geoLookup.ip} IP address information | GeoJS</title>
 </svelte:head>
 
-<h1>IP info for {lookup.ip}</h1>
+<Search />
+
+<h1>IP info for {geoLookup.ip}</h1>
 <div>
-	<table>
-		<tbody id="geo-table">
-			<tr>
-				<th>IP Address</th>
-				<td><code id="geojs_ip" geo-id="geo">{lookup.ip}</code></td>
-			</tr>
-			<tr>
-				<th>Organization</th>
-				<td id="geojs_organization_name" geo-id="geo">{lookup.organization_name}</td>
-			</tr>
-			<tr>
-				<th>Country</th>
-				<td id="geojs_country" geo-id="geo">{lookup.country}</td>
-			</tr>
-			<tr>
-				<th>City</th>
-				<td id="geojs_city" geo-id="geo">{#if lookup.city}{lookup.city}{:else}No city found{/if}</td>
-			</tr>
-			<tr>
-				<th>Region</th>
-				<td id="geojs_region" geo-id="geo">{lookup.region}</td>
-			</tr>
-			<tr>
-				<th>PTR</th>
-				<td id="geojs_ptr" geo-id="geo"></td>
-			</tr>
-			<tr>
-				<th>Latitude</th>
-				<td id="geojs_latitude" geo-id="geo">{lookup.latitude}</td>
-			</tr>
-			<tr>
-				<th>Longitude</th>
-				<td id="geojs_longitude" geo-id="geo">{lookup.longitude}</td>
-			</tr>
-			<tr>
-				<th>ASN</th>
-				<td id="geojs_asn" geo-id="geo">{lookup.asn}</td>
-			</tr>
-		</tbody>
-	</table>
+	<ResultTable geo={geoLookup} ptr={ptrLookup} />
 </div>
