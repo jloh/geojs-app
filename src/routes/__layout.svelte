@@ -6,7 +6,7 @@
 	<nav id="header" class="mx-4 mt-2">
 		<div class="flex flex-wrap mx-auto mb-2">
 			<div
-				class="flex flex-1 md:w-auto sm:text-left mt-2 items-baseline sm:items-center justify-center"
+				class="flex flex-1 md:w-auto sm:text-left mt-2 items-baseline sm:items-center justify-center sm:justify-start"
 			>
 				<a class="text-2xl" title="Home" href="/">GeoJS</a>
 				<a class="text-lg ml-2" title="Home" href="/">App</a>
