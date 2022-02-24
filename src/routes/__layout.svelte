@@ -3,7 +3,7 @@
 </script>
 
 <div class="border-b-2 mb-6">
-	<nav id="header" class="mx-4 mt-2">
+	<nav id="header" class="px-4 mt-2 max-w-6xl mx-auto">
 		<div class="flex flex-wrap mx-auto mb-2">
 			<div
 				class="flex flex-1 md:w-auto sm:text-left mt-2 items-baseline sm:items-center justify-center sm:justify-start"
@@ -26,8 +26,6 @@
 	</nav>
 </div>
 
-<div class="">
+<div class="max-w-3xl mx-auto px-2">
 	<slot />
 </div>
-
-<footer>Here is some footer</footer>

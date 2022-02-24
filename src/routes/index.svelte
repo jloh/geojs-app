@@ -34,7 +34,6 @@
 
 <Search />
 
-<h1>IP info for {geoLookup.ip}</h1>
 <div>
 	<ResultTable geo={geoLookup} ptr={ptrLookup} />
 </div>
