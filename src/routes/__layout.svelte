@@ -11,13 +11,15 @@
 				<a title="Home" href="/"
 					><img class="-mb-1 max-h-8" alt="GeoJS" src="https://www.geojs.io/img/logo.png" /></a
 				>
-				<a class="ml-3 text-lg text-gray-800" title="Home" href="/">App</a>
 				<a
-					class="ml-3 text-lg text-gray-800"
+					class="ml-3 text-lg text-gray-800 transition-all hover:text-blue-500"
 					title="GeoJS documentation"
 					href="https://geojs.io/docs/">Docs</a
 				>
-				<a class="ml-3 text-lg text-gray-800" title="Home" href="https://jloh.co/tag/geojs/">Blog</a
+				<a
+					class="ml-3 text-lg text-gray-800 transition-all hover:text-blue-500"
+					title="Home"
+					href="https://jloh.co/tag/geojs/">Blog</a
 				>
 			</div>
 			<div
