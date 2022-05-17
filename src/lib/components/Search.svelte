@@ -19,7 +19,9 @@
 </script>
 
 <div class="my-2">
-	<div class="my-4 text-center"><p>Enter an IP below to lookup its information</p></div>
+	<div class="my-4 text-center text-2xl">
+		<p>Enter an IP address below to lookup its information</p>
+	</div>
 	<form use:form autocomplete="off">
 		<div class="flex w-full">
 			<input
