@@ -25,11 +25,11 @@
 			<input
 				type="text"
 				name="ip_address"
-				class="w-full rounded-l-lg p-4 border-t mr-0 border-b border-l text-gray-800 border-gray-200 bg-white"
+				class="mr-0 w-full rounded-l-lg border-t border-b border-l border-gray-200 bg-white p-4 text-gray-800 invalid:border-pink-500 invalid:invalid:border-pink-500 invalid:text-pink-600 focus:border-sky-500 focus:outline-none focus:ring-1 focus:ring-sky-500"
 			/>
 			<button
 				type="submit"
-				class="px-4 rounded-r-lg  text-gray-800 font-bold p-4 uppercase border-r border-t border-b"
+				class="rounded-r-lg border-r border-t border-b bg-blue-400 p-4 px-4 font-bold uppercase text-gray-800 transition-all hover:bg-blue-500"
 				>Search</button
 			>
 		</div>
