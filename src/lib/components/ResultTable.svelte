@@ -6,7 +6,7 @@
 <h1 class="text-bold my-6 text-center text-xl font-medium">
 	Results for
 	<span
-		class="relative my-2 inline-block before:absolute before:-inset-1 before:block before:-skew-y-1 before:bg-blue-400 md:my-0 md:ml-1"
+		class="relative my-2 ml-1 inline-block before:absolute before:-inset-1 before:block before:-skew-y-1 before:bg-blue-400 md:my-0"
 	>
 		<span class="relative text-white">{geo.ip}</span>
 	</span>
