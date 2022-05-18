@@ -1,6 +1,6 @@
 <script context="module">
 	import { validateIP } from '$lib/validIP.js';
-	export async function load({ params, fetch, session, stuff }) {
+	export async function load({ params, fetch }) {
 		if (!validateIP(params.slug)) {
 			return {
 				status: 404
@@ -30,7 +30,7 @@
 	<title>{geoLookup.ip} IP address information | GeoJS</title>
 </svelte:head>
 
-<Search />
+<Search currentValue={geoLookup.ip} />
 
 <div>
 	<ResultTable geo={geoLookup} ptr={ptrLookup} />

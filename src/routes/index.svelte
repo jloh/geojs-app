@@ -1,6 +1,6 @@
 <script context="module">
 	import { browser } from '$app/env';
-	export async function load({ params, fetch, session, stuff }) {
+	export async function load({ _, fetch, session }) {
 		var geo, ptr;
 		if (!browser) {
 			geo = `https://get.geojs.io/v1/ip/geo/${session.userIP}.json`;

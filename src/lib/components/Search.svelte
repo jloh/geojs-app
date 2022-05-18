@@ -16,6 +16,7 @@
 			goto(`/s/${values.ip_address}`);
 		}
 	});
+	export let currentValue;
 </script>
 
 <div class="my-2">
@@ -24,12 +25,21 @@
 	</div>
 	<form use:form autocomplete="off">
 		<div class="flex w-full">
-			<input
-				type="text"
-				name="ip_address"
-				placeholder="1.1.1.1"
-				class="mr-0 w-full rounded-l-lg border-t border-b border-l border-gray-200 bg-white p-4 text-gray-800 invalid:border-pink-500 invalid:invalid:border-pink-500 invalid:text-pink-600 focus:border-sky-500 focus:outline-none focus:ring-1 focus:ring-sky-500"
-			/>
+			{#if currentValue}
+				<input
+					type="text"
+					name="ip_address"
+					value={currentValue}
+					class="mr-0 w-full rounded-l-lg border-t border-b border-l border-gray-200 bg-white p-4 text-gray-800 invalid:border-pink-500 invalid:invalid:border-pink-500 invalid:text-pink-600 focus:border-sky-500 focus:outline-none focus:ring-1 focus:ring-sky-500"
+				/>
+			{:else}
+				<input
+					type="text"
+					name="ip_address"
+					placeholder="1.1.1.1"
+					class="mr-0 w-full rounded-l-lg border-t border-b border-l border-gray-200 bg-white p-4 text-gray-800 invalid:border-pink-500 invalid:invalid:border-pink-500 invalid:text-pink-600 focus:border-sky-500 focus:outline-none focus:ring-1 focus:ring-sky-500"
+				/>
+			{/if}
 			<button
 				type="submit"
 				class="rounded-r-lg border-r border-t border-b bg-blue-400 p-4 px-4 font-bold uppercase text-white transition-all hover:bg-blue-500"
