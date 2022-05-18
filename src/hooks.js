@@ -1,14 +1,12 @@
 /** @type {import('@sveltejs/kit').GetSession} */
 export function getSession(event) {
 	console.log(event)
-	if (event.clientAddress) {
+	if (event.clientAddress !== null) {
 		console.log(event.clientAddress)
 	} else {
 		console.log("No clientAddress")
 	}
 	if (event.request.headers.get('x-nf-client-connection-ip') !== null) {
-		console.log(event.request.headers.get('x-nf-client-connection-ip'))
-		console.log(event)
 		return {
 			userIP: event.request.headers.get('x-nf-client-connection-ip')
 		}
