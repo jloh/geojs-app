@@ -1,6 +1,7 @@
 /** @type {import('@sveltejs/kit').GetSession} */
 export function getSession(event) {
 	console.log(event)
+	console.log(event.clientAddress)
 	if (event.clientAddress !== null) {
 		console.log(event.clientAddress)
 	} else {
