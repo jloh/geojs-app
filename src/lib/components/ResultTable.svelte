@@ -53,7 +53,8 @@
 							href="https://www.peeringdb.com/search?q={geo.asn}"
 							title="Peering DB search for {geo.asn}"
 							target="_blank"
-							class="text-blue-500 transition-all duration-100 hover:text-blue-600">{geo.asn}</a
+							class="text-blue-500 underline decoration-dotted transition-all duration-100 hover:text-blue-600"
+							>{geo.asn}</a
 						>{:else}No ASN found{/if}</td
 				>
 			</tr>
