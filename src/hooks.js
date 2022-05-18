@@ -2,6 +2,7 @@
 export function getSession(event) {
 	console.log(event)
 	console.log(event.clientAddress)
+	console.log(typeof event.clientAddress)
 	if (event.clientAddress !== null) {
 		console.log(event.clientAddress)
 	} else {
