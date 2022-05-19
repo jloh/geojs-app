@@ -22,13 +22,13 @@
     ##report-uri https://jloh.report-uri.com/r/d/csp/reportOnly;'''
     # Live rules -  be careful!
     Content-Security-Policy = '''
-    default-src 'none' ;
-    script-src 'self' stackpath.bootstrapcdn.com code.jquery.com cdnjs.cloudflare.com get.geojs.io cdn.simpleanalytics.io sa.geojs.io;
-    style-src 'self' stackpath.bootstrapcdn.com;
+    default-src 'none';
+    script-src 'self' get.geojs.io cdn.simpleanalytics.io sa.geojs.io;
+    style-src 'self';
     img-src 'self' data: api.simpleanalytics.io sa.geojs.io;
     connect-src api.simpleanalytics.io sa.geojs.io;
-    font-src 'none' ;
-    form-action 'self' ;
+    font-src 'none';
+    form-action 'self';
     upgrade-insecure-requests;
     block-all-mixed-content;
     report-uri https://jloh.report-uri.com/r/d/csp/enforce;'''
