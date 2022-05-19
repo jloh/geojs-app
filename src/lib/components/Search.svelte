@@ -21,24 +21,24 @@
 </script>
 
 <div class="my-2">
-	<div class="my-4 text-center text-2xl dark:text-gray-300">
+	<div class="my-4 text-center text-2xl dark:text-gray-200">
 		<p>Enter an IP address below to lookup its information</p>
 	</div>
 	<form use:form autocomplete="off">
-		<div class="flex w-full text-gray-800 dark:text-gray-200">
+		<div class="flex w-full text-gray-800 dark:text-gray-100">
 			{#if currentValue}
 				<input
 					type="text"
 					name="ip_address"
 					value={currentValue}
-					class="mr-0 w-full rounded-l-lg border-t border-b border-l border-gray-400 bg-white p-4 invalid:border-pink-500 invalid:invalid:border-pink-500 invalid:text-pink-600 focus:border-sky-500 focus:outline-none focus:ring-1 focus:ring-sky-500 dark:bg-gray-800"
+					class="mr-0 w-full rounded-l-lg border-t border-b border-l border-gray-400 bg-white p-4 invalid:border-pink-500 invalid:invalid:border-pink-500 invalid:text-pink-600 focus:border-sky-500 focus:outline-none focus:ring-1 focus:ring-sky-500 dark:bg-gray-900"
 				/>
 			{:else}
 				<input
 					type="text"
 					name="ip_address"
 					placeholder="1.1.1.1"
-					class="mr-0 w-full rounded-l-lg border-t border-b border-l border-gray-400 bg-white p-4 invalid:border-pink-500 invalid:invalid:border-pink-500 invalid:text-pink-600 focus:border-sky-500 focus:outline-none focus:ring-1 focus:ring-sky-500 dark:bg-gray-800"
+					class="mr-0 w-full rounded-l-lg border-t border-b border-l border-gray-400 bg-white p-4 invalid:border-pink-500 invalid:invalid:border-pink-500 invalid:text-pink-600 focus:border-sky-500 focus:outline-none focus:ring-1 focus:ring-sky-500 dark:bg-gray-900"
 				/>
 			{/if}
 			<button
@@ -49,7 +49,7 @@
 			>
 		</div>
 		<ValidationMessage for="ip_address" let:messages={message}>
-			<div class="w-full text-center text-red-700">{message || ''}</div>
+			<div class="w-full text-center text-red-700 dark:text-red-400">{message || ''}</div>
 		</ValidationMessage>
 	</form>
 </div>
