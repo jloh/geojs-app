@@ -2,6 +2,7 @@
 	import { createForm } from 'felte';
 	import { reporter, ValidationMessage } from '@felte/reporter-svelte';
 	import { goto } from '$app/navigation';
+	import { navigating } from '$app/stores';
 	import { validateIP } from '$lib/validIP.js';
 	const { form } = createForm({
 		extend: reporter,
@@ -42,6 +43,7 @@
 			{/if}
 			<button
 				type="submit"
+				disabled={$navigating}
 				class="rounded-r-lg border-r border-t border-b bg-blue-400 p-4 px-4 font-bold uppercase text-white transition-all hover:bg-blue-500"
 				>Search</button
 			>
