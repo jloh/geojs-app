@@ -1,6 +1,7 @@
 <script>
 	export let geo;
 	export let ptr;
+	import { navigating } from '$app/stores';
 </script>
 
 <h1 class="text-bold my-6 text-center text-xl font-medium">
@@ -16,23 +17,34 @@
 		<tbody>
 			<tr>
 				<th>IP Address</th>
-				<td><code>{geo.ip}</code></td>
+				<td
+					>{#if $navigating}Loading...{:else}<code>{geo.ip}</code>{/if}</td
+				>
 			</tr>
 			<tr>
 				<th>Organization</th>
-				<td>{geo.organization_name || 'Organization unknown'}</td>
+				<td
+					>{#if $navigating}Loading...{:else}{geo.organization_name ||
+							'Organization unknown'}{/if}</td
+				>
 			</tr>
 			<tr>
 				<th>Country</th>
-				<td>{geo.country || 'Country unknown'}</td>
+				<td
+					>{#if $navigating}Loading...{:else}{geo.country || 'Country unknown'}{/if}</td
+				>
 			</tr>
 			<tr>
 				<th>City</th>
-				<td>{geo.city || 'No city found'}</td>
+				<td
+					>{#if $navigating}Loading...{:else}{geo.city || 'No city found'}{/if}</td
+				>
 			</tr>
 			<tr>
 				<th>Region</th>
-				<td>{geo.region || 'No region found'}</td>
+				<td
+					>{#if $navigating}Loading...{:else}{geo.region || 'No region found'}{/if}</td
+				>
 			</tr>
 			<tr>
 				<th>PTR</th>
@@ -40,16 +52,20 @@
 			</tr>
 			<tr>
 				<th>Latitude</th>
-				<td>{geo.latitude || 'Latitude unknown'}</td>
+				<td
+					>{#if $navigating}Loading...{:else}{geo.latitude || 'Latitude unknown'}{/if}</td
+				>
 			</tr>
 			<tr>
 				<th>Longitude</th>
-				<td>{geo.longitude || 'Longitude unknown'}</td>
+				<td
+					>{#if $navigating}Loading...{:else}{geo.longitude || 'Longitude unknown'}{/if}</td
+				>
 			</tr>
 			<tr>
 				<th>ASN</th>
 				<td
-					>{#if geo.asn}<a
+					>{#if $navigating}Loading...{:else if geo.asn}<a
 							href="https://www.peeringdb.com/search?q={geo.asn}"
 							title="Peering DB search for {geo.asn}"
 							target="_blank"
