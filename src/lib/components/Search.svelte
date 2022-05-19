@@ -44,7 +44,7 @@
 			<button
 				type="submit"
 				disabled={$navigating}
-				class="rounded-r-lg border-r border-t border-b border-gray-400 bg-blue-400 p-4 px-4 font-bold uppercase text-white transition-all hover:bg-blue-500 dark:text-gray-200"
+				class="rounded-r-lg border-r border-t border-b border-gray-400 bg-blue-400 p-4 px-4 font-bold uppercase text-white transition-all hover:bg-blue-500 dark:bg-blue-500 dark:text-gray-200 dark:hover:bg-blue-600"
 				>Search</button
 			>
 		</div>
