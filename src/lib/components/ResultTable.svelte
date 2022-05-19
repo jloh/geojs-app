@@ -4,7 +4,7 @@
 	import { navigating } from '$app/stores';
 </script>
 
-<h1 class="text-bold my-6 text-center text-xl font-medium">
+<h1 class="text-bold my-6 text-center text-xl font-medium dark:text-gray-300">
 	Results for
 	<span
 		class="relative my-2 ml-1 inline-block before:absolute before:-inset-1 before:block before:-skew-y-1 before:bg-blue-400 md:my-0"
@@ -12,7 +12,9 @@
 		<span class="relative text-white">{geo.ip}</span>
 	</span>
 </h1>
-<div class="overflow-auto rounded border border-gray-400 bg-white">
+<div
+	class="overflow-auto rounded border border-gray-400 bg-white dark:bg-gray-900 dark:text-gray-200"
+>
 	<table class="w-full table-auto rounded text-lg">
 		<tbody>
 			<tr>
@@ -69,7 +71,7 @@
 							href="https://www.peeringdb.com/search?q={geo.asn}"
 							title="Peering DB search for {geo.asn}"
 							target="_blank"
-							class="text-blue-500 underline decoration-dotted transition-all duration-100 hover:text-blue-600"
+							class="text-blue-500 underline decoration-dotted transition-all duration-100 hover:text-blue-600 dark:text-blue-400 dark:hover:text-blue-500"
 							>{geo.asn}</a
 						>{:else}No ASN found{/if}</td
 				>

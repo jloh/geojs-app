@@ -21,30 +21,30 @@
 </script>
 
 <div class="my-2">
-	<div class="my-4 text-center text-2xl">
+	<div class="my-4 text-center text-2xl dark:text-gray-300">
 		<p>Enter an IP address below to lookup its information</p>
 	</div>
 	<form use:form autocomplete="off">
-		<div class="flex w-full">
+		<div class="flex w-full text-gray-800 dark:text-gray-200">
 			{#if currentValue}
 				<input
 					type="text"
 					name="ip_address"
 					value={currentValue}
-					class="mr-0 w-full rounded-l-lg border-t border-b border-l border-gray-200 bg-white p-4 text-gray-800 invalid:border-pink-500 invalid:invalid:border-pink-500 invalid:text-pink-600 focus:border-sky-500 focus:outline-none focus:ring-1 focus:ring-sky-500"
+					class="mr-0 w-full rounded-l-lg border-t border-b border-l border-gray-400 bg-white p-4 invalid:border-pink-500 invalid:invalid:border-pink-500 invalid:text-pink-600 focus:border-sky-500 focus:outline-none focus:ring-1 focus:ring-sky-500 dark:bg-gray-800"
 				/>
 			{:else}
 				<input
 					type="text"
 					name="ip_address"
 					placeholder="1.1.1.1"
-					class="mr-0 w-full rounded-l-lg border-t border-b border-l border-gray-200 bg-white p-4 text-gray-800 invalid:border-pink-500 invalid:invalid:border-pink-500 invalid:text-pink-600 focus:border-sky-500 focus:outline-none focus:ring-1 focus:ring-sky-500"
+					class="mr-0 w-full rounded-l-lg border-t border-b border-l border-gray-400 bg-white p-4 invalid:border-pink-500 invalid:invalid:border-pink-500 invalid:text-pink-600 focus:border-sky-500 focus:outline-none focus:ring-1 focus:ring-sky-500 dark:bg-gray-800"
 				/>
 			{/if}
 			<button
 				type="submit"
 				disabled={$navigating}
-				class="rounded-r-lg border-r border-t border-b bg-blue-400 p-4 px-4 font-bold uppercase text-white transition-all hover:bg-blue-500"
+				class="rounded-r-lg border-r border-t border-b border-gray-400 bg-blue-400 p-4 px-4 font-bold uppercase text-white transition-all hover:bg-blue-500 dark:text-gray-200"
 				>Search</button
 			>
 		</div>
