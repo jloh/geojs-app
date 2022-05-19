@@ -111,7 +111,7 @@
     "@sveltejs/adapter-netlify" "1.0.0-next.58"
     "@sveltejs/adapter-vercel" "1.0.0-next.52"
 
-"@sveltejs/adapter-cloudflare@1.0.0-next.19":
+"@sveltejs/adapter-cloudflare@1.0.0-next.19", "@sveltejs/adapter-cloudflare@^1.0.0-next.19":
   version "1.0.0-next.19"
   resolved "https://registry.yarnpkg.com/@sveltejs/adapter-cloudflare/-/adapter-cloudflare-1.0.0-next.19.tgz#cd1fb749ee3252a87b89d03686a1279a9c5361e6"
   integrity sha512-LET3DUYpl+deoKhkWCzhHUT7iipYkgVkOcRIJX7qT4m23A+MAbzcAC3npgwEYSe9RokOSWMVBr3tVujeES5EeA==
@@ -128,7 +128,7 @@
     esbuild "^0.14.21"
     tiny-glob "^0.2.9"
 
-"@sveltejs/adapter-vercel@1.0.0-next.52", "@sveltejs/adapter-vercel@^1.0.0-next.52":
+"@sveltejs/adapter-vercel@1.0.0-next.52":
   version "1.0.0-next.52"
   resolved "https://registry.yarnpkg.com/@sveltejs/adapter-vercel/-/adapter-vercel-1.0.0-next.52.tgz#d662c2bdf7ea841ab0bdc3f6c56d7c617d031bc2"
   integrity sha512-HEGmOX1HPGAotmosms0k88sTG9LnPMEQkpmWoyMdcffsPcT45SkJepXP/lvqNNlbUl9epZX95nqyZVie/mauRA==
