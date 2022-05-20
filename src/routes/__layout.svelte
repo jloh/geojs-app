@@ -1,5 +1,6 @@
 <script>
 	import '../app.css';
+	import { dev } from '$app/env';
 </script>
 
 <div class="mb-6 border-b-2 bg-white dark:border-gray-700 dark:bg-gray-900">
@@ -39,3 +40,8 @@
 <div class="mx-auto mb-12 max-w-3xl px-2">
 	<slot />
 </div>
+
+{#if !dev}
+	<script async src="https://sa.geojs.io/hello.js"></script>
+	<noscript><img src="https://sa.geojs.io/hello.gif" alt="" /></noscript>
+{/if}
