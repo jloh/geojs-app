@@ -25,10 +25,10 @@
 			</tr>
 			<tr>
 				<th>Organization</th>
-				<td
-					>{#if $navigating}Loading...{:else}{geo.organization_name ||
-							'Organization unknown'}{/if}</td
-				>
+				<td>
+					{#if $navigating}Loading...{:else if geo.organization_name === 'Unknown'}
+						Organization unknown{:else}{geo.organization_name || 'Organization unknown'}{/if}
+				</td>
 			</tr>
 			<tr>
 				<th>Country</th>
@@ -55,13 +55,15 @@
 			<tr>
 				<th>Latitude</th>
 				<td
-					>{#if $navigating}Loading...{:else}{geo.latitude || 'Latitude unknown'}{/if}</td
+					>{#if $navigating}Loading...{:else if geo.latitude === 'nil'}Latitude unknown{:else}{geo.latitude ||
+							'Longitude unknown'}{/if}</td
 				>
 			</tr>
 			<tr>
 				<th>Longitude</th>
 				<td
-					>{#if $navigating}Loading...{:else}{geo.longitude || 'Longitude unknown'}{/if}</td
+					>{#if $navigating}Loading...{:else if geo.longitude === 'nil'}Longitude unknown{:else}{geo.longitude ||
+							'Longitude unknown'}{/if}</td
 				>
 			</tr>
 			<tr>
