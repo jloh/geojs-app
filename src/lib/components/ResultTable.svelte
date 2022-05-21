@@ -68,8 +68,8 @@
 				<th>ASN</th>
 				<td
 					>{#if $navigating}Loading...{:else if geo.asn}<a
-							href="https://www.peeringdb.com/search?q={geo.asn}"
-							title="Peering DB search for {geo.asn}"
+							href="https://bgpview.io/asn/{geo.asn}"
+							title="BGPView page for {geo.asn}"
 							target="_blank"
 							class="text-blue-500 underline decoration-dotted transition-all duration-100 hover:text-blue-600 dark:text-blue-400 dark:hover:text-blue-500"
 							>{geo.asn}</a

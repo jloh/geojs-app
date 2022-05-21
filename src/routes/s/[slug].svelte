@@ -27,7 +27,13 @@
 </script>
 
 <svelte:head>
-	<title>{geoLookup.ip} - {geoLookup.organization_name} (ASN {geoLookup.asn}) | GeoJS</title>
+	{#if geoLookup.organization_name === 'Unknown'}
+		<title
+			>{geoLookup.ip} - {geoLookup.organization_name} organization (ASN {geoLookup.asn}) | GeoJS</title
+		>
+	{:else}
+		<title>{geoLookup.ip} - {geoLookup.organization_name} (ASN {geoLookup.asn}) | GeoJS</title>
+	{/if}
 </svelte:head>
 
 <Search currentValue={geoLookup.ip} />
