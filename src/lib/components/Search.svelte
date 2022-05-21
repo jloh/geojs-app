@@ -24,7 +24,7 @@
 	<div class="my-4 text-center text-2xl dark:text-gray-200">
 		<p>Enter an IP address below to lookup its information</p>
 	</div>
-	<form use:form autocomplete="off">
+	<form use:form autocomplete="off" method="GET" action="/s">
 		<div class="flex w-full text-gray-800 dark:text-gray-100">
 			{#if currentValue}
 				<input
