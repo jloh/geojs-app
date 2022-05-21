@@ -27,7 +27,7 @@
 </script>
 
 <svelte:head>
-	<title>{geoLookup.ip} IP address information | GeoJS</title>
+	<title>{geoLookup.ip} - {geoLookup.organization_name} (ASN {geoLookup.asn}) | GeoJS</title>
 </svelte:head>
 
 <Search currentValue={geoLookup.ip} />
