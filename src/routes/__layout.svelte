@@ -1,7 +1,12 @@
 <script>
 	import '../app.css';
 	import { dev } from '$app/env';
+	import { page } from '$app/stores';
 </script>
+
+<svelte:head>
+	<link rel="canonical" href="https://app.geojs.io{$page.url.pathname}" />
+</svelte:head>
 
 <div class="mb-6 border-b-2 bg-white dark:border-gray-700 dark:bg-gray-900">
 	<nav id="header" class="mx-auto max-w-6xl py-2 px-4">
