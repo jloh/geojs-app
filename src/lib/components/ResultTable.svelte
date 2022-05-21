@@ -39,13 +39,13 @@
 			<tr>
 				<th>City</th>
 				<td
-					>{#if $navigating}Loading...{:else}{geo.city || 'No city found'}{/if}</td
+					>{#if $navigating}Loading...{:else}{geo.city || 'City unknown'}{/if}</td
 				>
 			</tr>
 			<tr>
 				<th>Region</th>
 				<td
-					>{#if $navigating}Loading...{:else}{geo.region || 'No region found'}{/if}</td
+					>{#if $navigating}Loading...{:else}{geo.region || 'Region unknown'}{/if}</td
 				>
 			</tr>
 			<tr>
