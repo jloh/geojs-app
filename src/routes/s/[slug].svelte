@@ -38,6 +38,4 @@
 
 <Search currentValue={geoLookup.ip} />
 
-<div>
-	<ResultTable geo={geoLookup} ptr={ptrLookup} />
-</div>
+<ResultTable geo={geoLookup} ptr={ptrLookup} />
