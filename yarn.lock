@@ -135,15 +135,15 @@
   dependencies:
     esbuild "^0.14.21"
 
-"@sveltejs/kit@^1.0.0-next.334":
-  version "1.0.0-next.336"
-  resolved "https://registry.yarnpkg.com/@sveltejs/kit/-/kit-1.0.0-next.336.tgz#18f4ba17d95f5ad31a81b454017052c0e9c80325"
-  integrity sha512-DfERqclfwI8Gdx8/p5qIU3vwEOQfWqC8+BXR12bNykbXFM1k8koDplRDpmGzcsXyhslf83j+RmchnkifbNLjsw==
+"@sveltejs/kit@^1.0.0-next.338":
+  version "1.0.0-next.338"
+  resolved "https://registry.yarnpkg.com/@sveltejs/kit/-/kit-1.0.0-next.338.tgz#7e2e063fa0cff10f8c6a07e5f2e4a8192b348732"
+  integrity sha512-tqzSHB9ONjmUS8qsYUkypI1eg+FuyKVN5t0wEfIufv7X6ECK1xIRwU1A0igmNLPhqhTqAt3QNmFn2An0/8LbnQ==
   dependencies:
     "@sveltejs/vite-plugin-svelte" "^1.0.0-next.44"
     chokidar "^3.5.3"
     sade "^1.7.4"
-    vite "^2.9.0"
+    vite "^2.9.9"
 
 "@sveltejs/vite-plugin-svelte@^1.0.0-next.44":
   version "1.0.0-next.44"
@@ -1431,7 +1431,7 @@ v8-compile-cache@^2.0.3:
   resolved "https://registry.yarnpkg.com/v8-compile-cache/-/v8-compile-cache-2.3.0.tgz#2de19618c66dc247dcfb6f99338035d8245a2cee"
   integrity sha512-l8lCEmLcLYZh4nbunNZvQCJc5pv7+RCwa8q/LdUx8u7lsWvPDKmpodJAJNwkAhJC//dFY48KuIEmjtd4RViDrA==
 
-vite@^2.9.0:
+vite@^2.9.9:
   version "2.9.9"
   resolved "https://registry.yarnpkg.com/vite/-/vite-2.9.9.tgz#8b558987db5e60fedec2f4b003b73164cb081c5e"
   integrity sha512-ffaam+NgHfbEmfw/Vuh6BHKKlI/XIAhxE5QSS7gFLIngxg171mg1P3a4LSRME0z2ZU1ScxoKzphkipcYwSD5Ew==
