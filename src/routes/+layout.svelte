@@ -42,7 +42,7 @@
 	</nav>
 </div>
 
-<div class="mx-auto mb-12 max-w-3xl px-2">
+<div class="mx-auto mb-12 max-w-3xl px-2 dark:text-gray-400">
 	<slot />
 </div>
 
