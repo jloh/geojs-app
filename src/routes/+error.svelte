@@ -1,4 +1,5 @@
 <script>
+	import { dev } from '$app/env';
 	import { page } from '$app/stores';
 </script>
 
@@ -9,5 +10,8 @@
 <div class="my-4 dark:text-gray-200">
 	<pre class="overflow-scroll">{$page.status}
 {$page.error.message}
-{$page.error.stack}</pre>
+{#if dev}
+			{$page.error.stack}
+		{/if}
+</pre>
 </div>
