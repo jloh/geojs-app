@@ -24,9 +24,6 @@ const config = {
 		adapter: adapter({
 			// edge: false // Used to enable Netlify edge funcs
 		}),
-		prerender: {
-			enabled: false
-		}
 	}
 };
 

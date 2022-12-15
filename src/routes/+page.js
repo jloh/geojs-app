@@ -1,8 +1,18 @@
 /** @type {import('./$types').PageLoad} */
-export async function load({ fetch }) {
+import { browser } from '$app/environment';
+export const prerender = false;
+export async function load({ fetch, data }) {
+	const { clientIP } = data;
 	var geo, ptr;
-	geo = 'https://get.geojs.io/v1/ip/geo.json';
-	ptr = 'https://get.geojs.io/v1/dns/ptr.json';
+	if (browser) {
+		console.log('in browser part')
+		geo = 'https://get.geojs.io/v1/ip/geo.json';
+		ptr = 'https://get.geojs.io/v1/dns/ptr.json';
+	} else {
+		console.log('in non-browser part')
+		geo = `https://get.geojs.io/v1/ip/geo/${clientIP}.json`;
+		ptr = `https://get.geojs.io/v1/dns/ptr/${clientIP}.json`;
+	}
 	const geoResponse = await fetch(geo);
 	const ptrResponse = await fetch(ptr);
 	return {
