@@ -50,7 +50,7 @@
 			</tr>
 			<tr>
 				<th>PTR</th>
-				<td>{#await ptr}Loading...{:then ptr}{ptr.ptr}{/await}</td>
+				<td>{#if $navigating}Loading...{:else}{#await ptr}Loading...{:then ptr}{ptr.ptr}{/await}{/if}</td>
 			</tr>
 			<tr>
 				<th>Latitude</th>
@@ -73,6 +73,7 @@
 							href="https://bgpview.io/asn/{geo.asn}"
 							title="BGPView page for {geo.asn}"
 							target="_blank"
+							rel="noreferrer"
 							class="text-blue-500 underline decoration-dotted transition-all duration-100 hover:text-blue-600 dark:text-blue-400 dark:hover:text-blue-500"
 							>{geo.asn}</a
 						>{:else}No ASN found{/if}</td

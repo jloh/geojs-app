@@ -5,11 +5,9 @@ export async function load({ fetch, data }) {
 	const { clientIP } = data;
 	var geo, ptr;
 	if (browser) {
-		console.log('in browser part')
 		geo = 'https://get.geojs.io/v1/ip/geo.json';
 		ptr = 'https://get.geojs.io/v1/dns/ptr.json';
 	} else {
-		console.log('in non-browser part')
 		geo = `https://get.geojs.io/v1/ip/geo/${clientIP}.json`;
 		ptr = `https://get.geojs.io/v1/dns/ptr/${clientIP}.json`;
 	}
