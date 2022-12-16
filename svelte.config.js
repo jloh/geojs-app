@@ -22,7 +22,7 @@ const config = {
 			}
 		},
 		adapter: adapter({
-			// edge: false // Used to enable Netlify edge funcs
+			edge: true // Used to enable Netlify edge funcs
 		}),
 	}
 };
