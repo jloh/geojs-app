@@ -19,65 +19,102 @@
 		<tbody>
 			<tr>
 				<th>IP Address</th>
-				<td
-					>{#if $navigating}Loading...{:else}<code>{geo.ip}</code>{/if}</td
-				>
+				{#if $navigating}
+					<td class="animate-pulse">Loading...</td>
+				{:else}
+					<td><code>{geo.ip}</code></td>
+				{/if}
 			</tr>
 			<tr>
 				<th>Organization</th>
-				<td>
-					{#if $navigating}Loading...{:else if geo.organization_name === 'Unknown'}
-						Organization unknown{:else}{geo.organization_name || 'Organization unknown'}{/if}
-				</td>
+				{#if $navigating}
+					<td class="animate-pulse">Loading...</td>
+				{:else if geo.organization_name === 'Unknown'}
+					<td>Organization unknown</td>
+				{:else}
+					<td>{geo.organization_name || 'Organization unknown'}</td>
+				{/if}
 			</tr>
 			<tr>
 				<th>Country</th>
-				<td
-					>{#if $navigating}Loading...{:else}{geo.country || 'Country unknown'}{/if}</td
-				>
+				{#if $navigating}
+					<td class="animate-pulse">Loading...</td>
+				{:else}
+					<td>{geo.country || 'Country unknown'}</td>
+				{/if}
 			</tr>
 			<tr>
 				<th>City</th>
-				<td
-					>{#if $navigating}Loading...{:else}{geo.city || 'City unknown'}{/if}</td
-				>
+				{#if $navigating}
+					<td class="animate-pulse">Loading...</td>
+				{:else}
+					<td>{geo.city || 'City unknown'}</td>
+				{/if}
 			</tr>
 			<tr>
 				<th>Region</th>
-				<td
-					>{#if $navigating}Loading...{:else}{geo.region || 'Region unknown'}{/if}</td
-				>
+				{#if $navigating}
+					<td class="animate-pulse">Loading...</td>
+				{:else}
+					<td>{geo.region || 'Region unknown'}</td>
+				{/if}
 			</tr>
 			<tr>
 				<th>PTR</th>
-				<td>{#if $navigating}Loading...{:else}{#await ptr}Loading...{:then ptr}{ptr.ptr}{/await}{/if}</td>
+				{#if $navigating}
+					<td class="animate-pulse">Loading...</td>
+				{:else}
+					{#await ptr}
+						<td class="animate-pulse">Loading...</td>
+					{:then ptr}
+						{#await ptr.json()}
+							<td class="animate-pulse">Loading...</td>
+						{:then ptrJson}
+							<td>{ptrJson.ptr}</td>
+						{/await}
+					{:catch error}
+						<td>Failed getting PTR</td>
+					{/await}
+				{/if}
 			</tr>
 			<tr>
 				<th>Latitude</th>
-				<td
-					>{#if $navigating}Loading...{:else if geo.latitude === 'nil'}Latitude unknown{:else}{geo.latitude ||
-							'Longitude unknown'}{/if}</td
-				>
+				{#if $navigating}
+					<td class="animate-pulse">Loading...</td>
+				{:else if geo.latitude === 'nil'}
+					<td>Latitude unknown</td>
+				{:else}
+					<td>{geo.latitude || 'Latitude unknown'}</td>
+				{/if}
 			</tr>
 			<tr>
 				<th>Longitude</th>
-				<td
-					>{#if $navigating}Loading...{:else if geo.longitude === 'nil'}Longitude unknown{:else}{geo.longitude ||
-							'Longitude unknown'}{/if}</td
-				>
+				{#if $navigating}
+					<td class="animate-pulse">Loading...</td>
+				{:else if geo.longitude === 'nil'}
+					<td>Longitude unknown</td>
+				{:else}
+					<td>{geo.longitude || 'Longitude unknown'}</td>
+				{/if}
 			</tr>
 			<tr>
 				<th>ASN</th>
-				<td
-					>{#if $navigating}Loading...{:else if geo.asn}<a
+				{#if $navigating}
+					<td class="animate-pulse">Loading...</td>
+				{:else if geo.asn}
+					<td
+						><a
 							href="https://bgpview.io/asn/{geo.asn}"
 							title="BGPView page for {geo.asn}"
 							target="_blank"
 							rel="noreferrer"
 							class="text-blue-500 underline decoration-dotted transition-all duration-100 hover:text-blue-600 dark:text-blue-400 dark:hover:text-blue-500"
 							>{geo.asn}</a
-						>{:else}No ASN found{/if}</td
-				>
+						></td
+					>
+				{:else}
+					<td>No ASN found</td>
+				{/if}
 			</tr>
 		</tbody>
 	</table>

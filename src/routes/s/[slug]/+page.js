@@ -1,14 +1,15 @@
 import { error } from '@sveltejs/kit';
 import { validateIP } from '$lib/validIP.js';
+import { getPTR, getGeo } from '$lib/geojs.js'
+/** @type {import('./$types').PageLoad} */
 export async function load({ params, fetch }) {
 	if (!validateIP(params.slug)) {
 		throw error(404);
 	}
-	const geo = await fetch(`https://get.geojs.io/v1/ip/geo/${params.slug}.json`);
-	const ptr = await fetch(`https://get.geojs.io/v1/dns/ptr/${params.slug}.json`);
-
+	let geo = getGeo(fetch, params.slug)
+	let ptr = getPTR(fetch, params.slug)
 	return {
-		geoLookup: geo.ok && (await geo.json()),
-		ptrLookup: ptr.ok && ptr.json()
+		geoLookup: geo,
+		ptrLookup: ptr
 	};
 }

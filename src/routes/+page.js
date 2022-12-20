@@ -1,12 +1,11 @@
-/** @type {import('./$types').PageLoad} */
+import { getPTR, getGeo } from '$lib/geojs.js'
 export const prerender = false;
+/** @type {import('./$types').PageLoad} */
 export async function load({ fetch }) {
-	const geo = 'https://get.geojs.io/v1/ip/geo.json';
-	const ptr = 'https://get.geojs.io/v1/dns/ptr.json';
-	const geoResponse = await fetch(geo);
-	const ptrResponse = await fetch(ptr);
+	let geo = getGeo(fetch)
+	let ptr = getPTR(fetch)
 	return {
-		geoLookup: geoResponse.ok && (await geoResponse.json()),
-		ptrLookup: ptrResponse.ok && ptrResponse.json()
+		geoLookup: geo,
+		ptrLookup: ptr
 	};
 }
