@@ -10,6 +10,8 @@ export async function load({ params, fetch }) {
 	let ptr = getPTR(fetch, params.slug)
 	return {
 		geoLookup: geo,
-		ptrLookup: ptr
+		slowResults: {
+			ptrLookup: ptr
+		}
 	};
 }

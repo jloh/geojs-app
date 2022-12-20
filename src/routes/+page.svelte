@@ -12,5 +12,5 @@
 <Search />
 
 <div>
-	<ResultTable geo={data.geoLookup} ptr={data.ptrLookup} />
+	<ResultTable geo={data.geoLookup} ptr={data.slowResults.ptrLookup} />
 </div>

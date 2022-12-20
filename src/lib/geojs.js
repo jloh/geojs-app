@@ -37,5 +37,12 @@ export async function getPTR(fetchURL, address) {
 	if (address != null) {
 		endpoint = `https://get.geojs.io/v1/dns/ptr/${address}.json`;
 	}
-	return fetchURL(endpoint);
+	const res = await fetchURL(endpoint);
+	const resp = await res.json();
+
+	if (res.ok) {
+		return resp;
+	} else {
+		throw new Error(resp);
+	}
 }
