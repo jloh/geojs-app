@@ -20,7 +20,7 @@
   },
   "type": "module",
   "dependencies": {
-    "@felte/reporter-svelte": "1.1.4",
+    "@felte/reporter-svelte": "1.1.5",
     "@sveltejs/adapter-auto": "1.0.0",
     "@sveltejs/adapter-netlify": "1.0.0",
     "@sveltejs/kit": "1.0.0",
