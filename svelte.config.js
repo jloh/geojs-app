@@ -13,7 +13,7 @@ const config = {
 				'default-src': ['none'],
 				'script-src': ['self', 'get.geojs.io', 'cdn.simpleanalytics.io', 'sa.geojs.io'],
 				'style-src': ['self', 'unsafe-inline'],
-				'img-src': ['self', 'www.geojs.io'],
+				'img-src': ['self', 'www.geojs.io', 'sa.geojs.io'],
 				'connect-src': ['self', 'get.geojs.io', 'sa.geojs.io', 'api.simpleanalytics.io'],
 				'font-src': ['none'],
 				'form-action': ['self'],
