@@ -289,35 +289,42 @@
     esbuild "^0.17.18"
     set-cookie-parser "^2.6.0"
 
-"@sveltejs/kit@1.15.9":
-  version "1.15.9"
-  resolved "https://registry.yarnpkg.com/@sveltejs/kit/-/kit-1.15.9.tgz#3a8107a0ed0d56cd47363ddb9512cf9bc66103be"
-  integrity sha512-Og+4WlguPVPS0PmAHefp4KxvTVZfyDN09aORVXIdKSzqzodSJiLs7Fhi/Q0z0YjmcoNLWF24tI0a6mTusL6Yfg==
+"@sveltejs/kit@1.21.0":
+  version "1.21.0"
+  resolved "https://registry.yarnpkg.com/@sveltejs/kit/-/kit-1.21.0.tgz#88f73710b2aa4cebc2ecd2cc78ee3752dc68db5c"
+  integrity sha512-CBsYoI34SjtOQp0eG85dmVnvTR3Pjs8VgAQhO0CgQja9BIorKl808F1X8EunPhCcyek5r5lKQE1Mmbi0RuzHqA==
   dependencies:
-    "@sveltejs/vite-plugin-svelte" "^2.1.1"
+    "@sveltejs/vite-plugin-svelte" "^2.4.1"
     "@types/cookie" "^0.5.1"
     cookie "^0.5.0"
-    devalue "^4.3.0"
+    devalue "^4.3.1"
     esm-env "^1.0.0"
     kleur "^4.1.5"
     magic-string "^0.30.0"
     mime "^3.0.0"
     sade "^1.8.1"
-    set-cookie-parser "^2.5.1"
+    set-cookie-parser "^2.6.0"
     sirv "^2.0.2"
-    tiny-glob "^0.2.9"
     undici "~5.22.0"
 
-"@sveltejs/vite-plugin-svelte@^2.1.1":
-  version "2.1.1"
-  resolved "https://registry.yarnpkg.com/@sveltejs/vite-plugin-svelte/-/vite-plugin-svelte-2.1.1.tgz#df08dba9094208a2048968e329237be6893cf66d"
-  integrity sha512-7YeBDt4us0FiIMNsVXxyaP4Hwyn2/v9x3oqStkHU3ZdIc5O22pGwUwH33wUqYo+7Itdmo8zxJ45Qvfm3H7UUjQ==
+"@sveltejs/vite-plugin-svelte-inspector@^1.0.3":
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/@sveltejs/vite-plugin-svelte-inspector/-/vite-plugin-svelte-inspector-1.0.3.tgz#fdbf80b43bfaa20deaa5ff6d0676351aa9aecbcc"
+  integrity sha512-Khdl5jmmPN6SUsVuqSXatKpQTMIifoQPDanaxC84m9JxIibWvSABJyHpyys0Z+1yYrxY5TTEQm+6elh0XCMaOA==
   dependencies:
+    debug "^4.3.4"
+
+"@sveltejs/vite-plugin-svelte@^2.4.1":
+  version "2.4.2"
+  resolved "https://registry.yarnpkg.com/@sveltejs/vite-plugin-svelte/-/vite-plugin-svelte-2.4.2.tgz#04f9fb698853a6a681a2a7d32016487316c30917"
+  integrity sha512-ePfcC48ftMKhkT0OFGdOyycYKnnkT6i/buzey+vHRTR/JpQvuPzzhf1PtKqCDQfJRgoPSN2vscXs6gLigx/zGw==
+  dependencies:
+    "@sveltejs/vite-plugin-svelte-inspector" "^1.0.3"
     debug "^4.3.4"
     deepmerge "^4.3.1"
     kleur "^4.1.5"
     magic-string "^0.30.0"
-    svelte-hmr "^0.15.1"
+    svelte-hmr "^0.15.2"
     vitefu "^0.2.4"
 
 "@tailwindcss/forms@0.5.3":
@@ -552,10 +559,10 @@ detect-indent@^6.1.0:
   resolved "https://registry.yarnpkg.com/detect-indent/-/detect-indent-6.1.0.tgz#592485ebbbf6b3b1ab2be175c8393d04ca0d57e6"
   integrity sha512-reYkTUJAZb9gUuZ2RvVCNhVHdg62RHnJ7WJl8ftMi4diZ6NWlciOzQN88pUhSELEwflJht4oQDv0F0BMlwaYtA==
 
-devalue@^4.3.0:
-  version "4.3.0"
-  resolved "https://registry.yarnpkg.com/devalue/-/devalue-4.3.0.tgz#d86db8fee63a70317c2355be0d3d1b4d8f89a44e"
-  integrity sha512-n94yQo4LI3w7erwf84mhRUkUJfhLoCZiLyoOZ/QFsDbcWNZePrLwbQpvZBUG2TNxwV3VjCKPxkiiQA6pe3TrTA==
+devalue@^4.3.1:
+  version "4.3.2"
+  resolved "https://registry.yarnpkg.com/devalue/-/devalue-4.3.2.tgz#cc44e4cf3872ac5a78229fbce3b77e57032727b5"
+  integrity sha512-KqFl6pOgOW+Y6wJgu80rHpo2/3H07vr8ntR9rkkFIRETewbf5GaYYcakYfiKz89K+sLsuPkQIZaXDMjUObZwWg==
 
 didyoumean@^1.2.2:
   version "1.2.2"
@@ -884,16 +891,6 @@ globals@^13.19.0:
   integrity sha512-Qg5QtVkCy/kv3FUSlu4ukeZDVf9ee0iXLAUYX13gbR17bnejFTzr4iS9bY7kwCf1NztRNm1t91fjOiyx4CSwPQ==
   dependencies:
     type-fest "^0.20.2"
-
-globalyzer@0.1.0:
-  version "0.1.0"
-  resolved "https://registry.yarnpkg.com/globalyzer/-/globalyzer-0.1.0.tgz#cb76da79555669a1519d5a8edf093afaa0bf1465"
-  integrity sha512-40oNTM9UfG6aBmuKxk/giHn5nQ8RVz/SS4Ir6zgzOv9/qC3kKZ9v4etGTcJbEl/NyVQH7FGU7d+X1egr57Md2Q==
-
-globrex@^0.1.2:
-  version "0.1.2"
-  resolved "https://registry.yarnpkg.com/globrex/-/globrex-0.1.2.tgz#dd5d9ec826232730cd6793a5e33a9302985e6098"
-  integrity sha512-uHJgbwAMwNFf5mLst7IWLNg14x1CkeqglJb/K3doi4dw6q2IvAAmM/Y81kevy83wP+Sst+nutFTYOGg3d1lsxg==
 
 graceful-fs@^4.1.3:
   version "4.2.10"
@@ -1433,11 +1430,6 @@ sander@^0.5.0:
     mkdirp "^0.5.1"
     rimraf "^2.5.2"
 
-set-cookie-parser@^2.5.1:
-  version "2.5.1"
-  resolved "https://registry.yarnpkg.com/set-cookie-parser/-/set-cookie-parser-2.5.1.tgz#ddd3e9a566b0e8e0862aca974a6ac0e01349430b"
-  integrity sha512-1jeBGaKNGdEq4FgIrORu/N570dwoPYio8lSoYLWmX7sQ//0JY08Xh9o5pBcgmHQ/MbsYp/aZnOe1s1lIsbLprQ==
-
 set-cookie-parser@^2.6.0:
   version "2.6.0"
   resolved "https://registry.yarnpkg.com/set-cookie-parser/-/set-cookie-parser-2.6.0.tgz#131921e50f62ff1a66a461d7d62d7b21d5d15a51"
@@ -1542,10 +1534,10 @@ svelte-check@3.2.0:
     svelte-preprocess "^5.0.3"
     typescript "^5.0.3"
 
-svelte-hmr@^0.15.1:
-  version "0.15.1"
-  resolved "https://registry.yarnpkg.com/svelte-hmr/-/svelte-hmr-0.15.1.tgz#d11d878a0bbb12ec1cba030f580cd2049f4ec86b"
-  integrity sha512-BiKB4RZ8YSwRKCNVdNxK/GfY+r4Kjgp9jCLEy0DuqAKfmQtpL38cQK3afdpjw4sqSs4PLi3jIPJIFp259NkZtA==
+svelte-hmr@^0.15.2:
+  version "0.15.2"
+  resolved "https://registry.yarnpkg.com/svelte-hmr/-/svelte-hmr-0.15.2.tgz#d2f6fc82e040f2734abd54cea5cbef46828f2538"
+  integrity sha512-q/bAruCvFLwvNbeE1x3n37TYFb3mTBJ6TrCq6p2CoFbSTNhDE9oAtEfpy+wmc9So8AG0Tja+X0/mJzX9tSfvIg==
 
 svelte-preprocess@5.0.3, svelte-preprocess@^5.0.3:
   version "5.0.3"
@@ -1610,14 +1602,6 @@ thenify-all@^1.0.0:
   integrity sha512-RVZSIV5IG10Hk3enotrhvz0T9em6cyHBLkH/YAZuKqd8hRkKhSfCGIcP2KUY0EPxndzANBmNllzWPwak+bheSw==
   dependencies:
     any-promise "^1.0.0"
-
-tiny-glob@^0.2.9:
-  version "0.2.9"
-  resolved "https://registry.yarnpkg.com/tiny-glob/-/tiny-glob-0.2.9.tgz#2212d441ac17928033b110f8b3640683129d31e2"
-  integrity sha512-g/55ssRPUjShh+xkfx9UPDXqhckHEsHr4Vd9zX55oSdGZc/MD0m3sferOkwWtp98bv+kcVfEHtRJgBVJzelrzg==
-  dependencies:
-    globalyzer "0.1.0"
-    globrex "^0.1.2"
 
 to-regex-range@^5.0.1:
   version "5.0.1"
