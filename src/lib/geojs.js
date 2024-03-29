@@ -4,7 +4,7 @@
  * @public
  * @function getGeo
  * @description Gets Geolcoation information for an IP from the GeoJS API
- * @param {String} address - IP address.
+ * @param {String} [address] - IP address.
  * @param {RequestHandler} fetchURL - Fetch URL API
  * @returns {Array} -
  */
@@ -28,7 +28,7 @@ export async function getGeo(fetchURL, address) {
  * @public
  * @function getPTR
  * @description Gets a PTR
- * @param {String} address - IP address.
+ * @param {String} [address] - IP address.
  * @returns {Promise<Response>} - Determine whether IP address is valid.
  */
 
