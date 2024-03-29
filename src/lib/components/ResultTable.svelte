@@ -67,7 +67,11 @@
 					{#await ptr}
 						<td class="animate-pulse">Loading...</td>
 					{:then ptr}
-						<td>{ptr.ptr}</td>
+						{#await ptr.text() then ptrText}
+							<td>{ptrText}</td>
+						{:catch error}
+							<td>Failed getting PTR</td>
+						{/await}
 					{:catch error}
 						<td>Failed getting PTR</td>
 					{/await}
