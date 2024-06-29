@@ -11,10 +11,10 @@ const config = {
 		csp: {
 			directives: {
 				'default-src': ['none'],
-				'script-src': ['self', 'get.geojs.io', 'cdn.simpleanalytics.io', 'sa.geojs.io'],
+				'script-src': ['self', 'get.geojs.io'],
 				'style-src': ['self', 'unsafe-inline'],
-				'img-src': ['self', 'www.geojs.io', 'sa.geojs.io'],
-				'connect-src': ['self', 'get.geojs.io', 'sa.geojs.io', 'api.simpleanalytics.io'],
+				'img-src': ['self', 'www.geojs.io'],
+				'connect-src': ['self', 'get.geojs.io'],
 				'font-src': ['none'],
 				'form-action': ['self'],
 				'upgrade-insecure-requests': true,

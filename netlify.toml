@@ -23,10 +23,10 @@
     # Live rules -  be careful!
     Content-Security-Policy = '''
     default-src 'none';
-    script-src 'self' get.geojs.io cdn.simpleanalytics.io sa.geojs.io;
+    script-src 'self' get.geojs.io;
     style-src 'self';
-    img-src 'self' data: api.simpleanalytics.io sa.geojs.io;
-    connect-src api.simpleanalytics.io sa.geojs.io;
+    img-src 'self' data:;
+    connect-src 'none';
     font-src 'none';
     form-action 'self';
     upgrade-insecure-requests;

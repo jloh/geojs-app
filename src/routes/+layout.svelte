@@ -45,8 +45,3 @@
 <div class="mx-auto mb-12 max-w-3xl px-2 dark:text-gray-400">
 	<slot />
 </div>
-
-{#if !dev}
-	<script async src="https://sa.geojs.io/hello.js"></script>
-	<noscript><img src="https://sa.geojs.io/hello.gif" alt="" /></noscript>
-{/if}
