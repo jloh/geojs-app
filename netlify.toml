@@ -34,5 +34,5 @@
     report-uri https://jloh.report-uri.com/r/d/csp/enforce;'''
 
 [build]
-  command = "yarn build"
+  command = "npm run build"
   publish = "build"

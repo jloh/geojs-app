@@ -1,139 +1,94 @@
 <script>
-	export let geo;
-	export let ptr;
-	import { navigating } from '$app/stores';
+	/** @typedef {import('$lib/types.js').GeoJSData} GeoJSData */
+
+	/** @type {{ipData: GeoJSData, ptr: string}} */
+	let { ipData, ptr } = $props();
 </script>
 
-<h1 class="text-bold my-6 text-center text-xl font-medium dark:text-gray-300">
-	Results for
-	<span
-		class="relative my-2 ml-1 inline-block before:absolute before:-inset-1 before:block before:-skew-y-1 before:bg-blue-400 dark:before:bg-blue-500 md:my-0"
-	>
-		<span class="relative break-all text-white dark:text-gray-200">{geo.ip}</span>
-	</span>
-</h1>
-<div
-	class="overflow-auto rounded border border-gray-400 bg-white dark:bg-gray-900 dark:text-gray-200"
->
-	<table class="w-full table-auto rounded text-lg">
-		<tbody>
-			<tr>
-				<th>IP Address</th>
-				{#if $navigating}
-					<td class="animate-pulse">Loading...</td>
-				{:else}
-					<td><code>{geo.ip}</code></td>
-				{/if}
-			</tr>
-			<tr>
-				<th>Organization</th>
-				{#if $navigating}
-					<td class="animate-pulse">Loading...</td>
-				{:else if geo.organization_name === 'Unknown'}
-					<td>Organization unknown</td>
-				{:else}
-					<td>{geo.organization_name || 'Organization unknown'}</td>
-				{/if}
-			</tr>
-			<tr>
-				<th>Country</th>
-				{#if $navigating}
-					<td class="animate-pulse">Loading...</td>
-				{:else}
-					<td>{geo.country || 'Country unknown'}</td>
-				{/if}
-			</tr>
-			<tr>
-				<th>City</th>
-				{#if $navigating}
-					<td class="animate-pulse">Loading...</td>
-				{:else}
-					<td>{geo.city || 'City unknown'}</td>
-				{/if}
-			</tr>
-			<tr>
-				<th>Region</th>
-				{#if $navigating}
-					<td class="animate-pulse">Loading...</td>
-				{:else}
-					<td>{geo.region || 'Region unknown'}</td>
-				{/if}
-			</tr>
-			<tr>
-				<th>PTR</th>
-				{#if $navigating}
-					<td class="animate-pulse">Loading...</td>
-				{:else}
-					{#await ptr}
-						<td class="animate-pulse">Loading...</td>
-					{:then ptr}
-						{#await ptr.text() then ptrText}
-							<td>{ptrText}</td>
-						{:catch error}
-							<td>Failed getting PTR</td>
-						{/await}
-					{:catch error}
-						<td>Failed getting PTR</td>
-					{/await}
-				{/if}
-			</tr>
-			<tr>
-				<th>Latitude</th>
-				{#if $navigating}
-					<td class="animate-pulse">Loading...</td>
-				{:else if geo.latitude === 'nil'}
-					<td>Latitude unknown</td>
-				{:else}
-					<td>{geo.latitude || 'Latitude unknown'}</td>
-				{/if}
-			</tr>
-			<tr>
-				<th>Longitude</th>
-				{#if $navigating}
-					<td class="animate-pulse">Loading...</td>
-				{:else if geo.longitude === 'nil'}
-					<td>Longitude unknown</td>
-				{:else}
-					<td>{geo.longitude || 'Longitude unknown'}</td>
-				{/if}
-			</tr>
-			<tr>
-				<th>ASN</th>
-				{#if $navigating}
-					<td class="animate-pulse">Loading...</td>
-				{:else if geo.asn}
-					<td
-						><a
-							href="https://bgpview.io/asn/{geo.asn}"
-							title="BGPView page for {geo.asn}"
-							target="_blank"
-							rel="noreferrer"
-							class="text-blue-500 underline decoration-dotted transition-all duration-100 hover:text-blue-600 dark:text-blue-400 dark:hover:text-blue-500"
-							>{geo.asn}</a
-						></td
-					>
-				{:else}
-					<td>No ASN found</td>
-				{/if}
-			</tr>
-		</tbody>
-	</table>
-</div>
+<div class="mx-auto max-w-4xl">
+	<h2 class="mb-4 text-center text-xl font-semibold">
+		Results for
+		<span class="inline-block rounded bg-blue-500 px-3 py-1 text-white">
+			{ipData.ip}
+		</span>
+	</h2>
 
-<style>
-	th {
-		@apply border-r border-gray-400 p-2 px-4 text-left;
-	}
-	td {
-		@apply px-4 py-2;
-	}
-	tr {
-		@apply whitespace-pre border-b border-gray-400;
-	}
-	tr:last-child {
-		@apply border-b-0;
-	}
-	code {
-		@apply text-red-500;
-	}
-</style>
+	<div class="overflow-x-auto rounded-lg shadow-lg">
+		<table class="w-full bg-white">
+			<tbody class="divide-y divide-gray-200">
+				<tr class="hover:bg-gray-50">
+					<th class="bg-gray-100 px-6 py-4 text-left font-medium text-gray-900">IP Address</th>
+					<td class="px-6 py-4 text-gray-700"><code class="font-mono">{ipData.ip}</code></td>
+				</tr>
+				<tr class="hover:bg-gray-50">
+					<th class="bg-gray-100 px-6 py-4 text-left font-medium text-gray-900">Organization</th>
+					<td class="px-6 py-4 text-gray-700">
+						{ipData.organization_name || 'Unknown'}
+					</td>
+				</tr>
+				<tr class="hover:bg-gray-50">
+					<th class="bg-gray-100 px-6 py-4 text-left font-medium text-gray-900">Country</th>
+					<td class="px-6 py-4 text-gray-700">
+						{ipData.country || 'Unknown'}
+						{#if ipData.country_code}
+							<span class="ml-1 text-gray-500">({ipData.country_code})</span>
+						{/if}
+					</td>
+				</tr>
+				<tr class="hover:bg-gray-50">
+					<th class="bg-gray-100 px-6 py-4 text-left font-medium text-gray-900">City</th>
+					<td class="px-6 py-4 text-gray-700">{ipData.city || 'Unknown'}</td>
+				</tr>
+				<tr class="hover:bg-gray-50">
+					<th class="bg-gray-100 px-6 py-4 text-left font-medium text-gray-900">Region</th>
+					<td class="px-6 py-4 text-gray-700">{ipData.region || 'Unknown'}</td>
+				</tr>
+				<tr class="hover:bg-gray-50">
+					<th class="bg-gray-100 px-6 py-4 text-left font-medium text-gray-900">PTR</th>
+					<td class="px-6 py-4 text-gray-700">
+						<code class="font-mono text-sm">{ptr || 'No PTR record'}</code>
+					</td>
+				</tr>
+				<tr class="hover:bg-gray-50">
+					<th class="bg-gray-100 px-6 py-4 text-left font-medium text-gray-900">Latitude</th>
+					<td class="px-6 py-4 text-gray-700">
+						{ipData.latitude !== 'nil' ? ipData.latitude : 'Unknown'}
+					</td>
+				</tr>
+				<tr class="hover:bg-gray-50">
+					<th class="bg-gray-100 px-6 py-4 text-left font-medium text-gray-900">Longitude</th>
+					<td class="px-6 py-4 text-gray-700">
+						{ipData.longitude !== 'nil' ? ipData.longitude : 'Unknown'}
+					</td>
+				</tr>
+				<tr class="hover:bg-gray-50">
+					<th class="bg-gray-100 px-6 py-4 text-left font-medium text-gray-900">ASN</th>
+					<td class="px-6 py-4 text-gray-700">
+						{#if ipData.asn}
+							<a
+								href="https://bgpview.io/asn/{ipData.asn}"
+								rel="noopener noreferrer"
+								class="text-blue-600 underline hover:text-blue-800"
+							>
+								AS{ipData.asn}
+							</a>
+						{:else}
+							Unknown
+						{/if}
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+	<div class="mt-8 text-center text-sm text-gray-600">
+		<p>
+			Powered by <a
+				href="https://www.geojs.io/"
+				target="_blank"
+				rel="noopener noreferrer"
+				class="text-blue-600 hover:text-blue-800">GeoJS.io</a
+			>
+		</p>
+	</div>
+</div>

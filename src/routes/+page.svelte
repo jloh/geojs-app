@@ -1,16 +1,17 @@
 <script>
 	import Search from '$lib/components/Search.svelte';
 	import ResultTable from '$lib/components/ResultTable.svelte';
-	/** @type {import('./$types').PageData} */
-	export let data;
+
+	/** @type {{data: import('./$types').PageData}} */
+	let { data } = $props();
 </script>
 
 <svelte:head>
 	<title>GeoJS | IP address information</title>
 </svelte:head>
 
-<Search />
+<main class="container mx-auto px-4 py-8">
+	<Search />
 
-<div>
-	<ResultTable geo={data.geoLookup} ptr={data.slowResults.ptrLookup} />
-</div>
+	<ResultTable ipData={data.ipData} ptr={data.ptr} />
+</main>
