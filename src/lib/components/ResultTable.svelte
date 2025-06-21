@@ -15,7 +15,7 @@
 		</span>
 	</h2>
 
-	<div class="overflow-x-auto rounded-lg shadow-lg">
+	<div class="overflow-x-auto rounded-lg border border-gray-300">
 		<table class="w-full bg-white">
 			<tbody class="divide-y divide-gray-200">
 				<tr class="hover:bg-gray-50">
@@ -24,7 +24,7 @@
 						{#if $navigating}
 							<span class="animate-pulse text-gray-400">Loading...</span>
 						{:else}
-							<code class="font-mono">{ipData.ip}</code>
+							<code class="font-mono text-red-500">{ipData.ip}</code>
 						{/if}
 					</td>
 				</tr>
@@ -46,7 +46,7 @@
 						{:else}
 							{ipData.country || 'Unknown'}
 							{#if ipData.country_code}
-								<span class="ml-1 text-gray-500">({ipData.country_code})</span>
+								<span class="text-gray-500">({ipData.country_code})</span>
 							{/if}
 						{/if}
 					</td>
@@ -77,7 +77,7 @@
 						{#if $navigating}
 							<span class="animate-pulse text-gray-400">Loading...</span>
 						{:else}
-							<code class="font-mono text-sm">{ptr || 'No PTR record'}</code>
+							{ptr || 'No PTR record'}
 						{/if}
 					</td>
 				</tr>
@@ -135,3 +135,22 @@
 		</p>
 	</div>
 </div>
+
+<style>
+	@reference "tailwindcss";
+	th {
+		@apply border-r border-gray-200 p-2 px-4 text-left;
+	}
+	td {
+		@apply px-4 py-2;
+	}
+	tr {
+		@apply border-b border-gray-200 whitespace-pre;
+	}
+	tr:last-child {
+		@apply border-b-0;
+	}
+	code {
+		@apply text-red-500;
+	}
+</style>

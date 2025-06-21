@@ -12,6 +12,13 @@
 		validateInput();
 	}
 
+	function handleInput() {
+		// Only validate if already touched (error was shown)
+		if (touched && error) {
+			validateInput();
+		}
+	}
+
 	function validateInput() {
 		if (!touched) return;
 
@@ -65,6 +72,7 @@
 				name="ip"
 				bind:value={ipAddress}
 				on:blur={handleBlur}
+				on:input={handleInput}
 				placeholder="Enter IP address (e.g., 1.1.1.1)"
 				class="flex-1 rounded-l-lg border border-r-0 {error
 					? 'border-red-500'
