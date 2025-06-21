@@ -10,7 +10,9 @@
 <div class="mx-auto max-w-4xl">
 	<h2 class="mb-4 text-center text-xl font-semibold">
 		Results for
-		<span class="inline-block rounded bg-blue-500 px-3 py-1 text-white">
+		<span
+			class="inline-block rounded bg-blue-500 px-2 py-1 text-base break-all text-white md:px-3 md:text-xl"
+		>
 			{$navigating ? '...' : ipData.ip}
 		</span>
 	</h2>
