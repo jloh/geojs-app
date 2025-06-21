@@ -1,4 +1,6 @@
 <script>
+	import { navigating } from '$app/stores';
+
 	/** @typedef {import('$lib/types.js').GeoJSData} GeoJSData */
 
 	/** @type {{ipData: GeoJSData, ptr: string}} */
@@ -9,7 +11,7 @@
 	<h2 class="mb-4 text-center text-xl font-semibold">
 		Results for
 		<span class="inline-block rounded bg-blue-500 px-3 py-1 text-white">
-			{ipData.ip}
+			{$navigating ? '...' : ipData.ip}
 		</span>
 	</h2>
 
@@ -18,55 +20,96 @@
 			<tbody class="divide-y divide-gray-200">
 				<tr class="hover:bg-gray-50">
 					<th class="bg-gray-100 px-6 py-4 text-left font-medium text-gray-900">IP Address</th>
-					<td class="px-6 py-4 text-gray-700"><code class="font-mono">{ipData.ip}</code></td>
+					<td class="px-6 py-4 text-gray-700">
+						{#if $navigating}
+							<span class="animate-pulse text-gray-400">Loading...</span>
+						{:else}
+							<code class="font-mono">{ipData.ip}</code>
+						{/if}
+					</td>
 				</tr>
 				<tr class="hover:bg-gray-50">
 					<th class="bg-gray-100 px-6 py-4 text-left font-medium text-gray-900">Organization</th>
 					<td class="px-6 py-4 text-gray-700">
-						{ipData.organization_name || 'Unknown'}
+						{#if $navigating}
+							<span class="animate-pulse text-gray-400">Loading...</span>
+						{:else}
+							{ipData.organization_name || 'Unknown'}
+						{/if}
 					</td>
 				</tr>
 				<tr class="hover:bg-gray-50">
 					<th class="bg-gray-100 px-6 py-4 text-left font-medium text-gray-900">Country</th>
 					<td class="px-6 py-4 text-gray-700">
-						{ipData.country || 'Unknown'}
-						{#if ipData.country_code}
-							<span class="ml-1 text-gray-500">({ipData.country_code})</span>
+						{#if $navigating}
+							<span class="animate-pulse text-gray-400">Loading...</span>
+						{:else}
+							{ipData.country || 'Unknown'}
+							{#if ipData.country_code}
+								<span class="ml-1 text-gray-500">({ipData.country_code})</span>
+							{/if}
 						{/if}
 					</td>
 				</tr>
 				<tr class="hover:bg-gray-50">
 					<th class="bg-gray-100 px-6 py-4 text-left font-medium text-gray-900">City</th>
-					<td class="px-6 py-4 text-gray-700">{ipData.city || 'Unknown'}</td>
+					<td class="px-6 py-4 text-gray-700">
+						{#if $navigating}
+							<span class="animate-pulse text-gray-400">Loading...</span>
+						{:else}
+							{ipData.city || 'Unknown'}
+						{/if}
+					</td>
 				</tr>
 				<tr class="hover:bg-gray-50">
 					<th class="bg-gray-100 px-6 py-4 text-left font-medium text-gray-900">Region</th>
-					<td class="px-6 py-4 text-gray-700">{ipData.region || 'Unknown'}</td>
+					<td class="px-6 py-4 text-gray-700">
+						{#if $navigating}
+							<span class="animate-pulse text-gray-400">Loading...</span>
+						{:else}
+							{ipData.region || 'Unknown'}
+						{/if}
+					</td>
 				</tr>
 				<tr class="hover:bg-gray-50">
 					<th class="bg-gray-100 px-6 py-4 text-left font-medium text-gray-900">PTR</th>
 					<td class="px-6 py-4 text-gray-700">
-						<code class="font-mono text-sm">{ptr || 'No PTR record'}</code>
+						{#if $navigating}
+							<span class="animate-pulse text-gray-400">Loading...</span>
+						{:else}
+							<code class="font-mono text-sm">{ptr || 'No PTR record'}</code>
+						{/if}
 					</td>
 				</tr>
 				<tr class="hover:bg-gray-50">
 					<th class="bg-gray-100 px-6 py-4 text-left font-medium text-gray-900">Latitude</th>
 					<td class="px-6 py-4 text-gray-700">
-						{ipData.latitude !== 'nil' ? ipData.latitude : 'Unknown'}
+						{#if $navigating}
+							<span class="animate-pulse text-gray-400">Loading...</span>
+						{:else}
+							{ipData.latitude !== 'nil' ? ipData.latitude : 'Unknown'}
+						{/if}
 					</td>
 				</tr>
 				<tr class="hover:bg-gray-50">
 					<th class="bg-gray-100 px-6 py-4 text-left font-medium text-gray-900">Longitude</th>
 					<td class="px-6 py-4 text-gray-700">
-						{ipData.longitude !== 'nil' ? ipData.longitude : 'Unknown'}
+						{#if $navigating}
+							<span class="animate-pulse text-gray-400">Loading...</span>
+						{:else}
+							{ipData.longitude !== 'nil' ? ipData.longitude : 'Unknown'}
+						{/if}
 					</td>
 				</tr>
 				<tr class="hover:bg-gray-50">
 					<th class="bg-gray-100 px-6 py-4 text-left font-medium text-gray-900">ASN</th>
 					<td class="px-6 py-4 text-gray-700">
-						{#if ipData.asn}
+						{#if $navigating}
+							<span class="animate-pulse text-gray-400">Loading...</span>
+						{:else if ipData.asn}
 							<a
 								href="https://bgpview.io/asn/{ipData.asn}"
+								target="_blank"
 								rel="noopener noreferrer"
 								class="text-blue-600 underline hover:text-blue-800"
 							>
