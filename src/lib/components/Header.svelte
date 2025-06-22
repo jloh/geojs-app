@@ -4,8 +4,7 @@
 			<!-- Logo and branding -->
 			<div class="flex items-center space-x-2">
 				<a href="/" class="flex items-center space-x-2" data-sveltekit-preload-data="hover">
-					<img src="https://www.geojs.io/img/logo.png" alt="GeoJS" class="h-8 w-auto" />
-					<span class="text-xl font-semibold text-gray-900">GeoJS</span>
+					<img src="https://www.geojs.io/img/logo.png" alt="GeoJS logo" class="h-8 w-auto" />
 				</a>
 			</div>
 
