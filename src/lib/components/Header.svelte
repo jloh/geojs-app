@@ -28,10 +28,5 @@
 				</a>
 			</nav>
 		</div>
-
-		<!-- Tagline -->
-		<div class="border-t border-gray-100 py-2">
-			<p class="text-center text-sm text-gray-600">REST/JSON/JSONP IP Interface for Geo Lookups</p>
-		</div>
 	</div>
 </header>

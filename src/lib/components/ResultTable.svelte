@@ -133,7 +133,8 @@
 				target="_blank"
 				rel="noopener noreferrer"
 				class="text-blue-600 hover:text-blue-800">GeoJS.io</a
-			>
+			><span class="px-1">&#x2022;</span>
+			<span>REST/JSON/JSONP IP Interface for Geo Lookups</span>
 		</p>
 	</div>
 </div>
