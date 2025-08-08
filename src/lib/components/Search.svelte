@@ -61,12 +61,18 @@
 
 <div class="mb-8">
 	<div class="mb-4 text-center">
-		<h2 class="text-2xl font-semibold text-gray-800">IP Address Lookup</h2>
-		<p class="mt-2 text-gray-600">Enter an IP address to lookup its information</p>
+		<h2 class="text-2xl font-semibold text-gray-800 dark:text-gray-100">IP Address Lookup</h2>
+		<p class="mt-2 text-gray-600 dark:text-gray-400">
+			Enter an IP address to lookup its information
+		</p>
 	</div>
 
 	<form on:submit={handleSubmit} method="GET" action="/s" class="mx-auto max-w-2xl">
-		<div class="flex rounded-lg {error ? 'ring-2 ring-red-500' : ''}">
+		<div
+			class="flex rounded-lg shadow-md dark:shadow-xl dark:shadow-black/30 {error
+				? 'ring-2 ring-red-500'
+				: ''}"
+		>
 			<input
 				type="text"
 				name="ip"
@@ -75,8 +81,8 @@
 				on:input={handleInput}
 				placeholder="Enter IP address (e.g., 1.1.1.1)"
 				class="flex-1 rounded-l-lg border border-r-0 {error
-					? 'border-red-500'
-					: 'border-gray-300'} px-4 py-3 text-gray-700 placeholder-gray-400 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 focus:outline-none disabled:bg-gray-100 disabled:text-gray-500"
+					? 'border-red-500 dark:border-red-500'
+					: 'border-gray-300 dark:border-gray-600'} px-4 py-3 text-gray-700 placeholder-gray-400 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 focus:outline-none disabled:bg-gray-100 disabled:text-gray-500 dark:bg-gray-800 dark:text-gray-200 dark:placeholder-gray-500 dark:focus:border-blue-400 dark:focus:ring-blue-400 dark:disabled:bg-gray-700 dark:disabled:text-gray-400"
 				autocomplete="off"
 				aria-label="IP address to lookup"
 				aria-invalid={error ? 'true' : 'false'}
@@ -85,15 +91,22 @@
 			/>
 			<button
 				type="submit"
-				class="rounded-r-lg bg-blue-500 px-6 py-3 font-semibold text-white transition-colors hover:bg-blue-600 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:outline-none disabled:cursor-not-allowed disabled:bg-blue-300"
+				class="rounded-r-lg bg-blue-500 px-6 py-3 font-semibold text-white transition-colors hover:bg-blue-600 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:outline-none disabled:cursor-not-allowed disabled:bg-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-400 dark:focus:ring-offset-gray-900 dark:disabled:bg-blue-800"
 				disabled={!!$navigating}
 			>
 				{!!$navigating ? 'Searching...' : 'Search'}
 			</button>
 		</div>
 		{#if error}
-			<div class="mt-3 flex items-center space-x-2 rounded-md border border-red-200 bg-red-50 p-3">
-				<svg class="h-5 w-5 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+			<div
+				class="mt-3 flex items-center space-x-2 rounded-md border border-red-200 bg-red-50 p-3 dark:border-red-800 dark:bg-red-950"
+			>
+				<svg
+					class="h-5 w-5 text-red-600 dark:text-red-400"
+					fill="none"
+					stroke="currentColor"
+					viewBox="0 0 24 24"
+				>
 					<path
 						stroke-linecap="round"
 						stroke-linejoin="round"
@@ -101,7 +114,7 @@
 						d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
 					/>
 				</svg>
-				<p id="ip-error" class="text-sm font-medium text-red-800">{error}</p>
+				<p id="ip-error" class="text-sm font-medium text-red-800 dark:text-red-200">{error}</p>
 			</div>
 		{/if}
 	</form>

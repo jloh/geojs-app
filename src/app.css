@@ -1,3 +1,19 @@
 @import 'tailwindcss';
 @plugin '@tailwindcss/forms';
 @plugin '@tailwindcss/typography';
+
+/* Dark mode color scheme */
+@media (prefers-color-scheme: dark) {
+	:root {
+		color-scheme: dark;
+	}
+
+	html {
+		@apply bg-gray-900;
+	}
+}
+
+/* Smooth transitions for theme switching */
+body * {
+	@apply transition-colors duration-150;
+}
