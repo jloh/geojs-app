@@ -19,13 +19,9 @@
 		"@sveltejs/adapter-auto": "6.0.2",
 		"@sveltejs/kit": "2.27.3",
 		"@sveltejs/vite-plugin-svelte": "5.1.1",
-		"@tailwindcss/forms": "0.5.10",
-		"@tailwindcss/typography": "0.5.16",
 		"@tailwindcss/vite": "4.1.11",
 		"svelte": "5.38.0",
-		"svelte-check": "4.3.1",
 		"tailwindcss": "4.1.11",
-		"typescript": "5.9.2",
 		"vite": "6.3.5"
 	},
 	"devDependencies": {
@@ -33,6 +29,7 @@
 		"prettier": "3.6.2",
 		"prettier-plugin-svelte": "3.4.0",
 		"prettier-plugin-tailwindcss": "0.6.14",
+		"svelte-check": "4.3.1",
 		"vite-plugin-devtools-json": "0.4.1"
 	}
 }
