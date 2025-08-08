@@ -22,7 +22,7 @@
 		"@tailwindcss/vite": "4.1.11",
 		"svelte": "5.38.0",
 		"tailwindcss": "4.1.11",
-		"vite": "6.3.5"
+		"vite": "7.1.1"
 	},
 	"devDependencies": {
 		"@playwright/test": "1.54.2",
