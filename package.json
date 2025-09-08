@@ -19,9 +19,9 @@
 		"@sveltejs/adapter-auto": "6.1.0",
 		"@sveltejs/kit": "2.36.3",
 		"@sveltejs/vite-plugin-svelte": "6.1.4",
-		"@tailwindcss/vite": "4.1.12",
+		"@tailwindcss/vite": "4.1.13",
 		"svelte": "5.38.6",
-		"tailwindcss": "4.1.12",
+		"tailwindcss": "4.1.13",
 		"vite": "7.1.4"
 	},
 	"devDependencies": {
