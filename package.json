@@ -25,7 +25,7 @@
 		"vite": "7.1.7"
 	},
 	"devDependencies": {
-		"@playwright/test": "1.55.0",
+		"@playwright/test": "1.55.1",
 		"prettier": "3.6.2",
 		"prettier-plugin-svelte": "3.4.0",
 		"prettier-plugin-tailwindcss": "0.6.14",
