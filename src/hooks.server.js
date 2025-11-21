@@ -1,3 +1,5 @@
+import { sequence } from '@sveltejs/kit/hooks';
+import * as Sentry from '@sentry/sveltekit';
 /** @type {import('@sveltejs/kit').HandleFetch} */
 export async function handleFetch({ request, fetch, event }) {
 	if (request.url == 'https://get.geojs.io/v1/ip/geo.json') {
@@ -10,3 +12,5 @@ export async function handleFetch({ request, fetch, event }) {
 	}
 	return fetch(request);
 }
+export const handleError = Sentry.handleErrorWithSentry();
+export const handle = sequence(Sentry.sentryHandle());
