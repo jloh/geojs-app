@@ -20,9 +20,9 @@
 		"@sveltejs/adapter-netlify": "5.2.4",
 		"@sveltejs/kit": "2.49.2",
 		"@sveltejs/vite-plugin-svelte": "6.2.1",
-		"@tailwindcss/vite": "4.1.17",
+		"@tailwindcss/vite": "4.1.18",
 		"svelte": "5.43.15",
-		"tailwindcss": "4.1.17",
+		"tailwindcss": "4.1.18",
 		"vite": "7.2.7"
 	},
 	"devDependencies": {
