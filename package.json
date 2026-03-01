@@ -16,7 +16,7 @@
 		"test": "npm run test:e2e"
 	},
 	"dependencies": {
-		"@sentry/sveltekit": "10.27.0",
+		"@sentry/sveltekit": "10.40.0",
 		"@sveltejs/adapter-netlify": "5.2.4",
 		"@sveltejs/kit": "2.49.5",
 		"@sveltejs/vite-plugin-svelte": "6.2.4",
