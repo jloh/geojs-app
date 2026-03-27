@@ -19,7 +19,7 @@
 		"@sentry/sveltekit": "10.40.0",
 		"@sveltejs/adapter-netlify": "6.0.4",
 		"@sveltejs/kit": "2.53.4",
-		"@sveltejs/vite-plugin-svelte": "6.2.4",
+		"@sveltejs/vite-plugin-svelte": "7.0.0",
 		"@tailwindcss/vite": "4.2.2",
 		"svelte": "5.53.13",
 		"tailwindcss": "4.2.2",
