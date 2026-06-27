@@ -30,7 +30,7 @@
 		"prettier": "3.8.4",
 		"prettier-plugin-svelte": "3.5.2",
 		"prettier-plugin-tailwindcss": "0.7.4",
-		"svelte-check": "4.4.8",
+		"svelte-check": "4.7.1",
 		"vite-plugin-devtools-json": "1.0.0"
 	}
 }
